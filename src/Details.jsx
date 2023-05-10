@@ -18,7 +18,7 @@ const number=new Array(location.state).fill(0);
 const [key, setkey] = useState("")
 const getKey=async()=>{
 
-    const {data} =await axios.post("https://v-gther-server.vercel.app/api/key");
+    const {data} =await axios.post("https://v-gther-server-47gh.vercel.app/api/key");
     setkey(data.key);
     console.log(key)
 }
@@ -44,7 +44,7 @@ const HandleChange=()=>{
 }
 const checkoutHandler=async(amount)=>{
     getKey();
-    const {data}=await axios.post('https://v-gther-server.vercel.app/api/checkout',{
+    const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/api/checkout',{
         amount,
         notes
     });
@@ -59,7 +59,7 @@ const checkoutHandler=async(amount)=>{
         description:"For Ticket Booking",
         image:"",
         order_id:order.id,
-        callback_url:"https://v-gther-server.vercel.app/api/paymentverification",
+        callback_url:"https://v-gther-server-47gh.vercel.app/api/paymentverification",
         
         profile:{
             name:"Ayush Baluni",

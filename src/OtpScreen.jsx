@@ -19,7 +19,7 @@ export default function OtpBox() {
     useEffect(() => {
       
         const sendCode=async()=>{
-          const {data}= await axios.post('https://v-gther-server.vercel.app/verify/getcode',{
+          const {data}= await axios.post('https://v-gther-server-47gh.vercel.app/verify/getcode',{
             number
           });
           Alert(data);
