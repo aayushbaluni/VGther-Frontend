@@ -12,7 +12,7 @@ const MyTickets = () => {
   useEffect(() => {
     var getData=async()=>{
       const num=await localStorage.getItem("number");
-      const {data}=await axios.post("https://v-gther-server-47gh.vercel.app/api/getall",{
+      const {data}=await axios.post("https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/api/getall",{
         number:num
       });
       const val=[];

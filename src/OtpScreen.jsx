@@ -23,7 +23,7 @@ export default function OtpBox() {
     useEffect(() => {
       
         const sendCode=async()=>{
-          const {data}= await axios.post('https://v-gther-server-47gh.vercel.app/verify/getcode',{
+          const {data}= await axios.post('https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/verify/getcode',{
             number
           });
           console.log(data);
@@ -41,7 +41,7 @@ export default function OtpBox() {
       }
       console.log(code)
      try {
-      const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/verify/verifycode',{
+      const {data}=await axios.post('https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/verify/verifycode',{
         number,
        code
 
@@ -55,7 +55,7 @@ export default function OtpBox() {
 
      if(type=='register'){
       try {
-        const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/user/register',{
+        const {data}=await axios.post('https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/user/register',{
         number:number,
         name:name                
       });
@@ -75,7 +75,7 @@ export default function OtpBox() {
     }
     else{
       try {
-        const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/user/login',{
+        const {data}=await axios.post('https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/user/login',{
         number:number,           
       });
       
