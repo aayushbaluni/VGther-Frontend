@@ -10,24 +10,94 @@ import {
   Alert
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function OtpBox() {
 
   const number=useLocation().state.phone;
-    const [otp, setotp] = useState(new Array(4).fill(0));
+  const type=useLocation().state.type;
+  const name=useLocation().state.name;
+    const [otp, setotp] = useState(new Array(6).fill(0));
+
+    const navigation=useNavigate();
     useEffect(() => {
       
         const sendCode=async()=>{
           const {data}= await axios.post('https://v-gther-server-47gh.vercel.app/verify/getcode',{
             number
           });
-          Alert(data);
+          console.log(data);
         };
         sendCode();
     
      
-    })
+    },[]);
+  const  handleSubmit=async()=>{
+      let code=otp[0];
+      let i=0;
+      for( i=1;i<6;i++){
+        
+        code+=otp[i];
+      }
+      console.log(code)
+     try {
+      const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/verify/verifycode',{
+        number,
+       code
+
+     });
+     console.log(data);
+     if(data!= 'approved'){
+      if(data==='error')alert("Please try after some time");
+       else alert('Wrong OTP');
+     return;
+     }
+
+     if(type=='register'){
+      try {
+        const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/user/register',{
+        number:number,
+        name:name                
+      });
+      
+      console.log(data);
+      
+        try{
+          localStorage.setItem("number",number);
+          navigation('/');
+        }
+        catch(e){
+          alert("Error Creating User.")
+        }
+      } catch (error) {
+        alert("Error Saving User.")
+      }
+    }
+    else{
+      try {
+        const {data}=await axios.post('https://v-gther-server-47gh.vercel.app/user/login',{
+        number:number,           
+      });
+      
+      console.log(data);
+        try{
+          localStorage.setItem("number",number);
+          navigation('/');
+        }
+        catch(e){
+          alert("Error Logging  User.")
+        }
+      } catch (error) {
+        alert("Error Loggin in User.")
+      }
+    }
+
+     } catch (error) {
+      alert("Please try after some time...");
+      return
+     }
+           
+    }
     
   return (
    <Box minH={'calc(100vh)' } bgColor={'black'} minW={'100%'} textColor={'white'} justifyContent={'center'} alignItems={'center'} display={'flex'}>
@@ -48,14 +118,40 @@ export default function OtpBox() {
        <Text marginTop={'4'} textColor={'white'}>Enter the OTP recieved on Mobile Phone</Text>
        <Box marginTop={'10'} >
        <PinInput otp colorScheme='white' focusBorderColor='white' >
-        <PinInputField onChange={(e)=>otp[0]=e.target.val}  value={otp[0]}  marginRight={'4'}/>
-        <PinInputField  onChange={(e)=>otp[1]=e.target.val}  value={otp[1]} marginRight={'4'}/>
-        <PinInputField  onChange={(e)=>otp[2]=e.target.val}  value={otp[2]}  marginRight={'4'}/>
-        <PinInputField  onChange={(e)=>otp[3]=e.target.val}  value={otp[3]} marginRight={'4'}/>
+        <PinInputField onChange={(e)=>{
+          let newArr=[...otp];
+          newArr[0]=e.target.value;
+          setotp(newArr);
+        }}  value={otp[0]}  marginRight={'4'}/>
+        <PinInputField  onChange={(e)=>{
+          let newArr=[...otp];
+          newArr[1]=e.target.value;
+          setotp(newArr);
+        }}  value={otp[1]} marginRight={'4'}/>
+        <PinInputField  onChange={(e)=>{
+          let newArr=[...otp];
+          newArr[2]=e.target.value;
+          setotp(newArr);
+        }}  value={otp[2]}  marginRight={'4'}/>
+        <PinInputField  onChange={(e)=>{
+          let newArr=[...otp];
+          newArr[3]=e.target.value;
+          setotp(newArr);
+        }}  value={otp[3]} marginRight={'4'}/>
+        <PinInputField  onChange={(e)=>{
+          let newArr=[...otp];
+          newArr[4]=e.target.value;
+          setotp(newArr);
+        }}  value={otp[4]} marginRight={'4'}/>
+        <PinInputField  onChange={(e)=>{
+          let newArr=[...otp];
+          newArr[5]=e.target.value;
+          setotp(newArr);
+        }}  value={otp[5]} marginRight={'4'}/>
       </PinInput>
 
        </Box>
-       <Button marginTop={'10'} variant={'ghost'} color={'gray'}> Submit</Button>
+       <Button marginTop={'10'} variant={'ghost'} color={'gray'} onClick={handleSubmit}> Submit</Button>
       </Box>
     </Flex>
    </Box>

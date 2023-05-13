@@ -8,15 +8,25 @@ import { Box, Button, HStack, Heading, useMediaQuery,  Drawer,
   VStack,
   
    } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {AiOutlineMenu} from 'react-icons/ai'
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef()
   const [isMobile] = useMediaQuery("(max-width: 768px)") 
+  const [isLoggedin,setLogin]=useState(false);
+  
+
+  useEffect(() => {
+    const saved=localStorage.getItem('number');
+    if(saved){
+      setLogin(true);
+    }
+  }, )
+  
   return (
-    <HStack h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} pos={'sticky'} top={'0'}>
+    <HStack h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
         <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHER</Heading>
        {
         isMobile?<Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'100%'}>
@@ -45,6 +55,9 @@ const Header = () => {
         <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>About</Button></Link>
         <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Events</Button></Link>
         <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>ContactUs</Button></Link>
+        {
+          isLoggedin? <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
+        }
 
             </VStack>
 
@@ -55,10 +68,15 @@ const Header = () => {
               w={'full'}
               justifyContent={'space-evenly'}
             >
-            <Link to={'/login'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Login</Button></Link>
+            {
+              isLoggedin? <Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Logout</Button>:<>
+              <Link to={'/login'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Login</Button></Link>
 
-            <Link to={'/'}><Button variant={'outline'} textColor={'white'}  onClick={onClose} colorScheme='black'>SignUp</Button></Link>
-            </HStack>
+<Link to={'/'}><Button variant={'outline'} textColor={'white'}  onClick={onClose} colorScheme='black'>SignUp</Button></Link>
+
+              </>
+            }
+              </HStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -67,8 +85,13 @@ const Header = () => {
         <Link to={'/'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>About</Button></Link>
         <Link to={'/events'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Events</Button></Link>
         <Link to={'/'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>ContactUs</Button></Link>
-        <Link to={'/login'}><Button variant={'outline'} textColor={'white'} colorScheme='black'>Login/SignUp</Button></Link>
-
+      { isLoggedin? <Button variant={'ghost'} textColor={'white'} colorScheme='black'><Link to={'/myTickets'}>My Tickets</Link></Button>:<></>}
+        
+      { isLoggedin? <Button variant={'outline'} textColor={'white'} colorScheme='black' onClick={()=>{
+        localStorage.removeItem("number");
+        setLogin(false);
+      }}>Logout</Button>:<Link to={'/login'}><Button variant={'outline'} textColor={'white'} colorScheme='black'>Login/SignUp</Button></Link>
+}
 
         </Box>
        }

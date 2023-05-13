@@ -7,7 +7,9 @@ import Header from "./Header";
 import Login from "./Login";
 import OTPBox from "./OtpScreen";
 import OtpBox from "./OtpScreen";
+import SignUp from "./SignUp";
 
+import MyTickets from "./MyTickets";
 function App() {
   return (
    <Router>
@@ -19,6 +21,8 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/events" element={<Event/>}/>
       <Route path="/verify" element={<OtpBox/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/myTickets" element={<MyTickets/>}/>
     </Routes>
    </Router>
   );
