@@ -20,7 +20,7 @@ const Event = () => {
 
   return (
     <>
-    <Box minH={'calc(100vh)'}  bgColor={'black'} justifyContent={'flex-start'} alignItems={'center'} padding={'4'} display={'flex'} flexDir={'column'}>
+    <Box minH={'calc(100vh)'}  bgColor={'black'} justifyContent={'flex-start'} alignItems={'center'} padding={'4'} display={'flex'} flexDir={'column'} id='event'>
         <Heading textColor={'white'}>Events</Heading>
     <Box marginTop={16} minH={'calc(20vh)'} w={'calc(90vw)'} border={'1px solid white'} borderRadius={'25px '} display={'flex'} justifyContent={'center'} alignItems={'start'}  flexDir={'column'}padding={'10'}>
         <Heading textColor={'white'} fontSize={'3vh'} >Event Name</Heading>

@@ -11,6 +11,7 @@ import { Box, Button, HStack, Heading, useMediaQuery,  Drawer,
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {AiOutlineMenu} from 'react-icons/ai'
+import { HashLink } from 'react-router-hash-link'
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef()
@@ -26,7 +27,7 @@ const Header = () => {
   }, )
   
   return (
-    <HStack h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
+    <HStack zIndex={'5'} h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
         <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHER</Heading>
        {
         isMobile?<Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'100%'}>
@@ -51,12 +52,12 @@ const Header = () => {
           <DrawerHeader fontFamily={'Castoro Titling'} color={'white'}>V-GTHER</DrawerHeader>
           <DrawerBody>
             <VStack alignItems={'flex-start'}>
-            <Link to={'/'} ><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Home</Button></Link>
-        <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>About</Button></Link>
+            <HashLink smooth to={'/#home'} ><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Home</Button></HashLink>
+        <HashLink smooth to={'/#about'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>About</Button></HashLink >
         <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Events</Button></Link>
-        <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>ContactUs</Button></Link>
+        <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>ContactUs</Button></HashLink>
         {
-          isLoggedin? <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
+          isLoggedin? <Link to={'/myTickets'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
         }
 
             </VStack>
@@ -72,7 +73,7 @@ const Header = () => {
               isLoggedin? <Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Logout</Button>:<>
               <Link to={'/login'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Login</Button></Link>
 
-<Link to={'/'}><Button variant={'outline'} textColor={'white'}  onClick={onClose} colorScheme='black'>SignUp</Button></Link>
+<Link to={'/signUp'}><Button variant={'outline'} textColor={'white'}  onClick={onClose} colorScheme='black'>SignUp</Button></Link>
 
               </>
             }
@@ -81,11 +82,11 @@ const Header = () => {
         </DrawerContent>
       </Drawer>
         </Box>:<Box w={'50%'} display={'flex'} justifyContent={'space-around'} alignItems={'center'} h={'100%'}>
-        <Link to={'/'} ><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Home</Button></Link>
-        <Link to={'/'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>About</Button></Link>
-        <Link to={'/events'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Events</Button></Link>
-        <Link to={'/'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>ContactUs</Button></Link>
-      { isLoggedin? <Button variant={'ghost'} textColor={'white'} colorScheme='black'><Link to={'/myTickets'}>My Tickets</Link></Button>:<></>}
+        <HashLink smooth to={'/#home'} ><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Home</Button></HashLink>
+        <HashLink smooth to={'/#about'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>About</Button></HashLink>
+        <HashLink to={'/events/#event'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Events</Button></HashLink>
+        <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'} colorScheme='black'>ContactUs</Button></HashLink>
+      { isLoggedin?<Link to={'/myTickets'}> <Button variant={'ghost'} textColor={'white'} colorScheme='black'>My Tickets</Button></Link>:<></>}
         
       { isLoggedin? <Button variant={'outline'} textColor={'white'} colorScheme='black' onClick={()=>{
         localStorage.removeItem("number");

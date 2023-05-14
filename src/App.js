@@ -10,6 +10,7 @@ import OtpBox from "./OtpScreen";
 import SignUp from "./SignUp";
 
 import MyTickets from "./MyTickets";
+import Footer from "./Footer";
 function App() {
   return (
    <Router>
@@ -24,6 +25,7 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/myTickets" element={<MyTickets/>}/>
     </Routes>
+    <Footer/>
    </Router>
   );
 }
