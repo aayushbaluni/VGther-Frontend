@@ -9,6 +9,7 @@ import {
   InputLeftElement,
   Textarea,
   useColorModeValue,
+  useMediaQuery,
   VStack,
 } from '@chakra-ui/react';
 import ErrorMessage from './ErrorMessage';
@@ -18,14 +19,16 @@ import { BsPerson } from 'react-icons/bs';
 import { MdOutlineEmail } from 'react-icons/md';
 import axios from "axios";
 
+
 export default function Contact() {
+  const [isMobile] = useMediaQuery("(max-width: 768px)") 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
   async function handleSubmit(){
-    const {data}=await axios.post("https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/user/message",{
+    const {data}=await axios.post("http://localhost:80",{
         name:name,
         email:email,
         message:message
@@ -43,6 +46,8 @@ export default function Contact() {
   }
   return (
               <Box
+
+              width={isMobile?"19rem":"25rem"}
                 bg={useColorModeValue('black', 'black')}
                 borderRadius="lg"
                 p={8}

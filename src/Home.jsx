@@ -1,8 +1,11 @@
 import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import Contact from "./Contact"
+import "./assets/style.css"
+
 import {AiFillInstagram,AiOutlineMail} from "react-icons/ai";
 const Home = () => {
+  
   return (
     <>
     <Box minH={["",'calc(100vh)']} bgColor={'black'} id='home' >
@@ -12,7 +15,7 @@ const Home = () => {
 
     </Box>
     <Box paddingTop={['10','calc(10vh)']} minH={'calc(60vh)'} w={'100%'}  bgColor={'black'} justifyContent={'start'} textAlign={'center'} id='about'>
-        <Heading color={'white'} textTransform={'uppercase'}>We gather • we vibe together</Heading>
+        <Heading id="h1" color={'white'} textTransform={'uppercase'}>We gather • we vibe together</Heading>
        <Stack direction={['column','row']} padding={["3",'5']} marginTop={'9'} marginLeft={['','9']} align={'center'} minH={'100%'} >
         <Box w={['100%','50%']}  alignItems={'center'} minH={'100%'} >
         <video loop autoPlay muted>
@@ -35,7 +38,7 @@ the stage is set, and the spotlight is on you!
     </Box>
     <Box bgColor={'black'} justifyContent={'start'} textAlign={'center'} w={'100%'} padding={'10'} id='contact'>
       <Heading color={'white'}  textTransform={'uppercase'} textDecor={'underline'}>Reach Out to US</Heading>
-      <Text color={'white'}>Just drop your query andd we will respond asap</Text>
+      <Text color={'white'} padding={"5"}>Fill out the contact form and we'll respond promptly.</Text>
       <Box width={'100%'} display={'flex'} flexDir={['column','row']} alignItems={'center'} justifyContent={'space-around'} padding={'10'} >
       <Contact/>
       </Box>

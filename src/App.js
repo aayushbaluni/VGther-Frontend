@@ -9,6 +9,7 @@ import OtpBox from "./OtpScreen";
 import SignUp from "./SignUp";
 import Privacy from "./Privacy";
 import Terms from "./Terms";
+import Scrolltop from "./Scrolltop";
 
 import MyTickets from "./MyTickets";
 import Footer from "./Footer";
@@ -16,6 +17,7 @@ function App() {
   return (
    <Router>
     <Header/>
+    <Scrolltop/>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/paymentsucess" element={<PaymentSucess/>}/>

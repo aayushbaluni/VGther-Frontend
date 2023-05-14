@@ -29,16 +29,17 @@ const Event = () => {
     <Box minH={'calc(5vh)'} w={'100%'} marginTop={['4']} display={'flex'}justifyContent={'flex-end'} alignItems={'center'} >
     <Box minw={'calc(25vh)'} paddingRight={'0'}>
          <HStack  paddingRight={'10'}>
-        <Button {...inc} onClick={()=>{
-            cntTicket<100?setcntTicket(cntTicket+1):setcntTicket(cntTicket);
-        }}>+</Button>
-        <Input {...input} color={'white'} onChange={(e)=>console.log(e.target.value)} minW={'20'}/>
+        
         <Button {...dec} onChange={()=>{
             cntTicket>1?setcntTicket(cntTicket-1):setcntTicket(cntTicket);
         }}>-</Button>
+        <Input {...input} color={'white'} onChange={(e)=>console.log(e.target.value)} disabled minW={'20'} style={{width:"0px", padding:"24px",fontSize:"20px"}}/>
+        <Button {...inc} onClick={()=>{
+            cntTicket<100?setcntTicket(cntTicket+1):setcntTicket(cntTicket);
+        }}>+</Button>
       </HStack>
      </Box>
-        <Link to={`/details`} state={cntTicket}><Button variant={'outline'} color='grey' fontSize={'1.5vh'} w={['calc(10vh)','calc(15vh)']}  > Book Tickets</Button></Link>
+        <Link to={`/details`} state={cntTicket}><Button variant={'outline'} color='white' fontSize={'1.5vh'} w={['calc(10vh)','calc(15vh)']}  > Book Tickets</Button></Link>
     </Box>
     </Box>
    

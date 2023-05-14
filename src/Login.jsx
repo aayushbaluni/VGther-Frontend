@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
   Flex,
   Box,
@@ -34,6 +34,12 @@ export default function Login() {
     })
    
   };
+  useEffect(() => {
+ // Define the 'otpless' function
+ window.otpless = (otplessUser) => {
+  alert(JSON.stringify(otplessUser));
+ };
+}, []);
 
 
   return (

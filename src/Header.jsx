@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Heading, useMediaQuery,  Drawer,
+import { Box,Image, Button, HStack, Heading, useMediaQuery,  Drawer,
   DrawerBody,
   DrawerHeader,
   DrawerOverlay,
@@ -28,7 +28,10 @@ const Header = () => {
   
   return (
     <HStack zIndex={'5'} h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
-        <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHR</Heading>
+        {/* <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHR</Heading> */}
+        <Link href="#">
+        <Image w="100px" src={require('./assets/vGatherbackWhite.png')} alt="vGatherbackWhite" />
+      </Link>
        {
         isMobile?<Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'100%'}>
            <Button
