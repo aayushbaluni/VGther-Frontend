@@ -28,7 +28,7 @@ const Header = () => {
   
   return (
     <HStack zIndex={'5'} h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
-        <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHER</Heading>
+        <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHR</Heading>
        {
         isMobile?<Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'100%'}>
            <Button
@@ -49,12 +49,12 @@ const Header = () => {
 
         <DrawerContent   bgColor={'black'}>
           <DrawerCloseButton color={'white'}/> 
-          <DrawerHeader fontFamily={'Castoro Titling'} color={'white'}>V-GTHER</DrawerHeader>
+          <DrawerHeader fontFamily={'Castoro Titling'} color={'white'}>V-GTHR</DrawerHeader>
           <DrawerBody>
             <VStack alignItems={'flex-start'}>
             <HashLink smooth to={'/#home'} ><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Home</Button></HashLink>
         <HashLink smooth to={'/#about'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>About</Button></HashLink >
-        <Link to={'/'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Events</Button></Link>
+        <Link to={'/events'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Events</Button></Link>
         <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>ContactUs</Button></HashLink>
         {
           isLoggedin? <Link to={'/myTickets'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>

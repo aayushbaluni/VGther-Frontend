@@ -36,7 +36,6 @@ export default function OtpBox() {
       let code=otp[0];
       let i=0;
       for( i=1;i<6;i++){
-        
         code+=otp[i];
       }
       console.log(code)
@@ -94,6 +93,7 @@ export default function OtpBox() {
 
      } catch (error) {
       alert("Please try after some time...");
+      console.log(error);
       return
      }
            

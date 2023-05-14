@@ -1,5 +1,6 @@
 import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
+import Contact from "./Contact"
 import {AiFillInstagram,AiOutlineMail} from "react-icons/ai";
 const Home = () => {
   return (
@@ -7,7 +8,6 @@ const Home = () => {
     <Box minH={["",'calc(100vh)']} bgColor={'black'} id='home' >
       <video loop autoPlay muted >
         <source src={require('./assets/Bg.mp4')} type='video/mp4' />
-
       </video>
 
     </Box>
@@ -35,10 +35,9 @@ the stage is set, and the spotlight is on you!
     </Box>
     <Box bgColor={'black'} justifyContent={'start'} textAlign={'center'} w={'100%'} padding={'10'} id='contact'>
       <Heading color={'white'}  textTransform={'uppercase'} textDecor={'underline'}>Reach Out to US</Heading>
+      <Text color={'white'}>Just drop your query andd we will respond asap</Text>
       <Box width={'100%'} display={'flex'} flexDir={['column','row']} alignItems={'center'} justifyContent={'space-around'} padding={'10'} >
-        <AiFillInstagram color='white' fontSize={'10vh'}/>
-        <AiOutlineMail color='white' fontSize={'10vh'}/>
-
+      <Contact/>
       </Box>
     </Box>
     </>
