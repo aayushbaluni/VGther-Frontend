@@ -21,7 +21,7 @@ const MyTickets = ({isLogedin}) => {
   // }
   useEffect(() => {
     var getData=async()=>{
-      const {data}=await axios.post("https://v-gther-server-1-1stesrafq-aayushbaluni.vercel.app/api/getall",isLogedin);
+      const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/getall",isLogedin);
       const val=[];
      data.map((v,i)=>{
       v.tickets.map((a,ind)=>{

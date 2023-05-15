@@ -11,7 +11,7 @@ const PaymentSucess = () => {
 
   useEffect(() => {
     var getData=async()=>{
-      const {data}=await axios.post("https://v-gther-server-1-1stesrafq-aayushbaluni.vercel.app/api/getDetails",{
+      const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/getDetails",{
         id:id
       });
       setdetails(data.tickets)
