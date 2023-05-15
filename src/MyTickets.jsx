@@ -7,7 +7,6 @@ import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import img1 from "./assets/vGatherbackWhite.png";
 const MyTickets = ({isLogedin}) => {
-
   const searchQuerry=useSearchParams()[0];
   const id=searchQuerry.get('id');
   const [details, setdetails] = useState([])
@@ -22,7 +21,7 @@ const MyTickets = ({isLogedin}) => {
   // }
   useEffect(() => {
     var getData=async()=>{
-      const num=await localStorage.getItem("number");
+      const num=isLogedin.mobile.number;
       const {data}=await axios.post("https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/api/getall",{
         number:num
       });
@@ -35,7 +34,15 @@ const MyTickets = ({isLogedin}) => {
       console.log(val);
      setdetails(val);
     }
-    getData();
+    if(isLogedin.mobile.number===null){
+      navigation('/');
+      alert("PLease login by clicking on the floting window")
+    }
+    else{ 
+      getData();
+    }
+    
+    
     
     
   },[]);

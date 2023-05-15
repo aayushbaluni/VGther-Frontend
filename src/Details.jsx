@@ -74,9 +74,9 @@ const checkoutHandler=async(amount)=>{
         callback_url:`https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/api/paymentverification?parent_number=${num}`,
         
         profile:{
-            name:"Ayush Baluni",
+            name:"Kunal Sharma",
             email:"abaluni6@gmail.com",
-            contact:"9079073202"   
+            contact:"9413465367"   
         },
         notes:{
             "address":"RazorPay Coorporate Office"
