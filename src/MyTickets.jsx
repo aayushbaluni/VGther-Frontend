@@ -22,7 +22,7 @@ const MyTickets = ({isLogedin}) => {
   useEffect(() => {
     var getData=async()=>{
       const num=isLogedin.mobile.number;
-      const {data}=await axios.post("https://v-gther-server-1-1stesrafq-aayushbaluni.vercel.app//api/getall",{
+      const {data}=await axios.post("https://v-gther-server-1-1stesrafq-aayushbaluni.vercel.app/api/getall",{
         number:num
       });
       const val=[];
