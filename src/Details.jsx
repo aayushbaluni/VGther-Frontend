@@ -50,6 +50,7 @@ const HandleChange=async()=>{
     }
 }
     console.log(notes)
+    
     checkoutHandler(times*350)
 }
 const checkoutHandler=async(amount)=>{
@@ -102,27 +103,20 @@ const handleReferralCodeChange = (event) => {
 };
   return (
     <Box minH={'calc(100vh)'} w={'100%'} bgColor={'black'} display={'flex'} flexDir={'column'} justifyContent={'start'} alignItems={'center'} padding={10}>
-      <Heading textColor={'white'} fontSize={['3vh', '4vh', '5vh']} textDecor={'underline'}>
-        Enter Details of Onboarding People
-      </Heading>
-      <Text color={'white'} fontSize={['1.8vh', '2vh', '2.5vh']} paddingTop={2}>
-        Please make sure that the details are the same as on IDs
-      </Text>
-      <Box minH={'calc(80vh)'} marginTop={10} w={['90%', '80%', '70%']}>
-        <Box minH={'calc(30vh)'} w={'100%'} border={'1px solid white'} display={'flex'} flexDir={'column'} borderRadius={'23px'} padding={10} marginBottom={10}>
-          <Text textColor={'white'} marginBottom={2}>
-            Name
-          </Text>
-          <Input marginTop={2} variant={'outline'} color={'white'} placeholder='Enter Name'  focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
-          <Text textColor={'white'} marginTop={4} marginBottom={2}>
-            Email
-          </Text>
-          <Input marginTop={2} variant={'outline'} color={'white'} placeholder='Enter Email' focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
-          <Text textColor={'white'} marginTop={4} marginBottom={2}>
-            Mobile Number
-          </Text>
-          <Input marginTop={2} variant={'outline'} color={'white'} placeholder='Mobile Number' disabled value={isLogedin.mobile.number===null?"":isLogedin.mobile.number} focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
-          <Box display="flex" alignItems="center" marginTop={4}>
+        <Heading textColor={'white'}  fontSize={'3vh'} textDecor={'underline'}>Enter Details of Onbording Peoples</Heading>
+        <Text color={'white'} fontSize={'1.8vh'} paddingTop={'2'}>Please Make sure that the details are same as on id's </Text>
+        <Box minH={'calc(80vh)'} marginTop={10} w={'90%'}>
+            {
+              name.map((item,i) =>
+                <Box minH={'calc(30vh)'} w={'100%'} border={'1px solid white'} display={'flex'}  flexDir={'column'} borderRadius={'23px'} padding={'10'} marginBottom={'10'}>
+                    <Text textColor={'white'}>Person {i+1}</Text>
+                    <Input marginTop={'10'}  variant={'outline'} color={'white'} placeholder='Enter Name' focusBorderColor='white' textColor={'white'}  w={['80%','30%']} onChange={(e)=>name[i]=e.target.value}/>
+                    <Input marginTop={'10'}  variant={'outline'} color={'white'} placeholder='Enter Phone Number' focusBorderColor='white' textColor={'white'}  w={['80%','30%']} onChange={(e)=>number[i]=e.target.value}/>
+
+                </Box>
+              )
+            }
+            <Box display="flex" alignItems="center" marginTop={4}>
             <Checkbox colorScheme="white" defaultIsChecked onChange={handleCouponChange}>
               I have a coupon
             </Checkbox>
@@ -153,12 +147,11 @@ const handleReferralCodeChange = (event) => {
               I agree to the terms and conditions
             </Checkbox>
           </Box>
+            <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} onClick={HandleChange}> Proceed For Payment of Rs. {350*times} </Button>
         </Box>
-      <Button marginTop={4} alignSelf={'center'} onClick={HandleChange}>
-        Proceed For {350*times} Payment
-      </Button>
+
+
     </Box>
-  </Box>
 
   )
 }
