@@ -31,7 +31,7 @@ const getKey=async()=>{
 }
 
 const HandleChange=async()=>{
-    const num=await localStorage.getItem("number")  ;
+    const num=isLogedin.mobile.number  ;
     console.log(num);
     if(notes.length==0){
 
