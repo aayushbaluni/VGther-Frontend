@@ -49,7 +49,6 @@ const Header = (props) => {
 
        <Drawer isOpen={isOpen} placement="right" onClose={onClose} bgColor='black'>
         <DrawerOverlay />
-
         <DrawerContent   bgColor={'black'}>
           <DrawerCloseButton color={'white'}/> 
           <DrawerHeader fontFamily={'Castoro Titling'} color={'white'}>V-GTHR</DrawerHeader>
