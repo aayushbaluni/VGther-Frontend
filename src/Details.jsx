@@ -10,7 +10,6 @@ const Details = ({isLogedin}) => {
     const navigation = useNavigate();
     useEffect(() => {
     if(isLogedin.mobile.number!==null){
-
         }
         else{ 
             navigation('/');
@@ -26,7 +25,6 @@ const number=new Array(location.state).fill(0);
 
 const [key, setkey] = useState("")
 const getKey=async()=>{
-
     const {data} =await axios.post("https://v-gther-server-1-ik6fk8cnm-aayushbaluni.vercel.app/api/key");
     setkey(data.key);
     console.log(key)
@@ -115,7 +113,7 @@ const handleReferralCodeChange = (event) => {
           <Text textColor={'white'} marginBottom={2}>
             Name
           </Text>
-          <Input marginTop={2} variant={'outline'} color={'white'} placeholder='Enter Name' focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
+          <Input marginTop={2} variant={'outline'} color={'white'} placeholder='Enter Name'  focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
           <Text textColor={'white'} marginTop={4} marginBottom={2}>
             Email
           </Text>
@@ -123,7 +121,7 @@ const handleReferralCodeChange = (event) => {
           <Text textColor={'white'} marginTop={4} marginBottom={2}>
             Mobile Number
           </Text>
-          <Input marginTop={2} variant={'outline'} color={'white'} value='Phone Number' disabled focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
+          <Input marginTop={2} variant={'outline'} color={'white'} placeholder='Mobile Number' disabled value={isLogedin.mobile.number===null?"":isLogedin.mobile.number} focusBorderColor='white' textColor={'white'} w={['80%', '30%']} />
           <Box display="flex" alignItems="center" marginTop={4}>
             <Checkbox colorScheme="white" defaultIsChecked onChange={handleCouponChange}>
               I have a coupon
