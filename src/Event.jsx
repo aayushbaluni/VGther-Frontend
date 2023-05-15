@@ -2,7 +2,7 @@ import { Box, Button, Center, HStack, Heading, Input, Text, useNumberInput } fro
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const Event = () => {
+const Event = ({isLogedin}) => {
     const [cntTicket, setcntTicket] = useState(1);
     const [draw, setDraw] = useState(false)
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
@@ -39,10 +39,12 @@ const Event = () => {
         }}>+</Button>
       </HStack>
      </Box>
-        <Link to={`/details`} state={cntTicket}><Button variant={'outline'} color='white' fontSize={'1.5vh'} w={['calc(10vh)','calc(15vh)']}  > Book Tickets</Button></Link>
+        <Link to={`/details`} state={cntTicket}><Button variant={'outline'} color='white' disabled={true} isDisabled={isLogedin.mobile.number===null} fontSize={'1.5vh'} w={['calc(10vh)','calc(15vh)']}  > Book Tickets</Button></Link>
     </Box>
     </Box>
-   
+    {
+      isLogedin.mobile.number==null?<Text>Please Sign in by clicking on the floating button</Text>:""
+    }
     </Box>
     </>
   )

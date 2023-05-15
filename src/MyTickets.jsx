@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom';
+
 import QRCode from 'react-qr-code';
 import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import img1 from "./assets/vGatherbackWhite.png";
-const MyTickets = () => {
+const MyTickets = ({isLogedin}) => {
+
   const searchQuerry=useSearchParams()[0];
   const id=searchQuerry.get('id');
   const [details, setdetails] = useState([])
-
+  const navigation = useNavigate()
+  // if(isLogedin.length>0){
+      
+  // }
+  // else{
+    
+  //     navigation('/');
+  //     // alert("PLease login by clicking on the floting window")
+  // }
   useEffect(() => {
     var getData=async()=>{
       const num=await localStorage.getItem("number");
@@ -25,6 +36,8 @@ const MyTickets = () => {
      setdetails(val);
     }
     getData();
+    
+    
   },[]);
 
     return (
