@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 
   const payload = {
-    waId: "6c896352ad5c4af6b9047edebed16f5e",
+    waId: "999eb4e12a1840c1b06c8ea42d161b6d",
   };
   const headers = {
     clientId: "02fz9i8d",

@@ -53,7 +53,7 @@ const HandleChange=async()=>{
     checkoutHandler(times*350)
 }
 const checkoutHandler=async(amount)=>{
-    const num=await localStorage.getItem("number")  ;
+    const num=await localStorage.getItem("number");
 
     getKey();
     const {data}=await axios.post('https://v-gther-server-1-1stesrafq-aayushbaluni.vercel.app/api/checkout',{
