@@ -70,8 +70,11 @@ const Footer = () => {
       {accounts.map((sc, index) => (
   <a href={sc.url} target="_blank" rel="noopener noreferrer" key={index}>
     <IconButton
+    variant={'ghost'} 
+    textColor={'white'} 
+    colorScheme='black'
       aria-label={sc.label}
-      colorScheme={sc.type}
+      // colorScheme={sc.type}
       icon={sc.icon}
       rounded="md"
     />

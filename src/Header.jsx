@@ -12,19 +12,19 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {AiOutlineMenu} from 'react-icons/ai'
 import { HashLink } from 'react-router-hash-link'
-const Header = () => {
+const Header = (props) => {
+  const { isLogedin } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef()
   const [isMobile] = useMediaQuery("(max-width: 768px)") 
-  const [isLoggedin,setLogin]=useState(false);
-  
+  console.log(isLogedin);
 
-  useEffect(() => {
-    const saved=localStorage.getItem('number');
-    if(saved){
-      setLogin(true);
-    }
-  }, )
+  // useEffect(() => {
+  //   const saved=localStorage.getItem('number');
+  //   if(saved){
+  //     setLogin(true);
+  //   }
+  // }, )
   
   return (
     <HStack zIndex={'5'} h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
@@ -60,7 +60,7 @@ const Header = () => {
         <Link to={'/events'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Events</Button></Link>
         <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>ContactUs</Button></HashLink>
         {
-          isLoggedin? <Link to={'/myTickets'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
+          isLogedin!==null? <Link to={'/myTickets'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
         }
 
             </VStack>
@@ -72,14 +72,6 @@ const Header = () => {
               w={'full'}
               justifyContent={'space-evenly'}
             >
-            {
-              isLoggedin? <Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Logout</Button>:<>
-              <Link to={'/login'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Login</Button></Link>
-
-<Link to={'/signUp'}><Button variant={'outline'} textColor={'white'}  onClick={onClose} colorScheme='black'>SignUp</Button></Link>
-
-              </>
-            }
               </HStack>
           </DrawerBody>
         </DrawerContent>
@@ -89,13 +81,7 @@ const Header = () => {
         <HashLink smooth to={'/#about'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>About</Button></HashLink>
         <HashLink to={'/events/#event'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Events</Button></HashLink>
         <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'} colorScheme='black'>ContactUs</Button></HashLink>
-      { isLoggedin?<Link to={'/myTickets'}> <Button variant={'ghost'} textColor={'white'} colorScheme='black'>My Tickets</Button></Link>:<></>}
-        
-      { isLoggedin? <Button variant={'outline'} textColor={'white'} colorScheme='black' onClick={()=>{
-        localStorage.removeItem("number");
-        setLogin(false);
-      }}>Logout</Button>:<Link to={'/login'}><Button variant={'outline'} textColor={'white'} colorScheme='black'>Login/SignUp</Button></Link>
-}
+      { isLogedin!==null?<Link to={'/myTickets'}> <Button variant={'ghost'} textColor={'white'} colorScheme='black'>My Tickets</Button></Link>:<></>}
 
         </Box>
        }

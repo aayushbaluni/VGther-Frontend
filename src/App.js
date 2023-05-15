@@ -10,13 +10,25 @@ import SignUp from "./SignUp";
 import Privacy from "./Privacy";
 import Terms from "./Terms";
 import Scrolltop from "./Scrolltop";
+import React, { useState,useEffect } from 'react';
 
 import MyTickets from "./MyTickets";
 import Footer from "./Footer";
 function App() {
+  const [isLogedin,setisLogedin] = useState('');
+  useEffect(() => {
+//  Define the 'otpless' function
+ window.otpless = (otplessUser) => {
+  // console.log(JSON.stringify(otplessUser));
+  console.log(otplessUser.mobile.number);
+  localStorage.setItem("number",9413465367);
+  setisLogedin(JSON.stringify(otplessUser))
+  console.log(isLogedin)
+ };
+}, []);
   return (
    <Router>
-    <Header/>
+    <Header isLogedin={isLogedin}/>
     <Scrolltop/>
     <Routes>
       <Route path="/" element={<Home/>}/>

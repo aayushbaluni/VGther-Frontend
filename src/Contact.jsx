@@ -90,11 +90,14 @@ export default function Contact() {
                   </FormControl>
 
                   <Button
-                    colorScheme="blue"
-                    bg="blue.400"
-                    color="white"
+                    // colorScheme="blue"
+                    bg="greay.400"
+                    // color="white"
+                    variant={'ghost'} textColor={'white'} colorScheme='black'
                     _hover={{
-                      bg: 'blue.500',
+                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+                      border: '2px solid #6EE7B7',
+                      borderRadius: '4px',
                     }}
                     onClick={handleSubmit}
                     isFullWidth>

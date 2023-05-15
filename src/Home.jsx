@@ -2,8 +2,6 @@ import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import Contact from "./Contact"
 import "./assets/style.css"
-
-import {AiFillInstagram,AiOutlineMail} from "react-icons/ai";
 const Home = () => {
   
   return (

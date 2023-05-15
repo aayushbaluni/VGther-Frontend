@@ -34,12 +34,7 @@ export default function Login() {
     })
    
   };
-  useEffect(() => {
- // Define the 'otpless' function
- window.otpless = (otplessUser) => {
-  alert(JSON.stringify(otplessUser));
- };
-}, []);
+  
 
 
   return (
