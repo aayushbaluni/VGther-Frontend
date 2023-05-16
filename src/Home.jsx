@@ -3,7 +3,7 @@ import React from 'react'
 import Contact from "./Contact"
 import "./assets/style.css"
 const Home = () => {
-  
+  window.scroll(0,0)
   return (
     <>
     <Box minH={["",'calc(100vh)']} bgColor={'black'} id='home' >

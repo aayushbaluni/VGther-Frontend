@@ -78,7 +78,7 @@ const Header = (props) => {
         </Box>:<Box w={'50%'} display={'flex'} justifyContent={'space-around'} alignItems={'center'} h={'100%'}>
         <HashLink smooth to={'/#home'} ><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Home</Button></HashLink>
         <HashLink smooth to={'/#about'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>About</Button></HashLink>
-        <HashLink to={'/events/#event'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Events</Button></HashLink>
+        <HashLink to={'/events'}><Button variant={'ghost'} textColor={'white'} colorScheme='black'>Events</Button></HashLink>
         <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'} colorScheme='black'>ContactUs</Button></HashLink>
       { isLogedin.mobile.number!=null?<Link to={'/myTickets'}> <Button variant={'ghost'} textColor={'white'} colorScheme='black'>My Tickets</Button></Link>:<></>}
 

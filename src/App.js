@@ -3,7 +3,7 @@ import Home from "./Home";
 import PaymentSucess from "./PaymentSucess";
 import Event from "./Event";
 import Eventadmin from "./Eventadmin";
-import Details from "./Details";
+// import Details from "./Details";
 import Detailsadmin from "./Detailsadmin";
 import Header from "./Header";
 import Privacy from "./Privacy";
@@ -35,7 +35,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/paymentsucess" element={<PaymentSucess/>}/>
-      <Route path="/details" element={<Details isLogedin={isLogedin}/>}/>
+      {/* <Route path="/details" element={<Details isLogedin={isLogedin}/>}/> */}
       <Route path="/detailsadmin" element={<Detailsadmin isLogedin={isLogedin}/>}/>
       {/* <Route path="/login" element={<Login/>}/> */}
       <Route path="/events" element={<Event isLogedin={isLogedin}/>}/>

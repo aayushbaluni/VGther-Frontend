@@ -1,4 +1,4 @@
-import { Box, Button, Center, HStack, Heading, Input, Text, useNumberInput } from '@chakra-ui/react';
+import { Box,Flex,Image, Button, Center, HStack, Heading, Input, Text, useNumberInput } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -21,11 +21,27 @@ const Event = ({ isLogedin }) => {
   return (
     <>
       <Box minH="calc(100vh)" bgColor="black" justifyContent="flex-start" alignItems="center" padding="4" display="flex" flexDir="column" id="event">
+      
         <Heading textColor="white">Events</Heading>
         <Box marginTop={16} minH="calc(20vh)" w="calc(90vw)" border="1px solid white" borderRadius="25px" display="flex" justifyContent="center" alignItems="start" flexDir="column" padding="10">
-          <Heading textColor="white" fontSize="3vh">Event Name</Heading>
-          <Text color="white">Venue:</Text>
-          <Text color="white">Time:</Text>
+        
+      <Flex width={"100%"} flexDir={['column', 'row']} alignItems={['center', 'flex-start']} justifyContent="space-between">
+        <Box padding="5">
+          {/* <Text color="white" marginTop="-10" marginBottom="10" textDecor="underline">
+            V-Gther
+          </Text> */}
+          <Heading textColor="white" fontSize="3vh">
+            Venu: Aray Main Campus
+          </Heading>
+          <Text textColor="white" marginTop="5" fontSize="1.9vh">
+            Time: 6:00PM Onwards
+          </Text>
+        </Box>
+        <Flex padding="5" justifyContent="center" alignItems="center">
+          <Image w="150px" src={require('./assets/Eticket.png')} alt="ETicket" />
+        </Flex>
+      </Flex>
+
 
           <Box minH="calc(5vh)" w="100%" marginTop={['4']} display="flex" justifyContent="right" alignItems="center">
             <Box minW="calc(22vh)" paddingRight="0">
@@ -40,7 +56,7 @@ const Event = ({ isLogedin }) => {
               </HStack>
             </Box>
             <Link to={`/detailsadmin`} state={cntTicket}>
-              <Button variant="outline" color="white" fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
+              <Button variant="outline" isDisabled={isLogedin.mobile.number===null} color="white" fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
                 Book Tickets
               </Button>
             </Link>
