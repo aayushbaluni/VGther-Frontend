@@ -7,7 +7,6 @@ import axios  from 'axios'
 import { useToast } from '@chakra-ui/react';
 
 const Details = ({isLogedin}) => {
-  window.scroll(0,0)
   const toast = useToast();
     const navigation = useNavigate();
     useEffect(() => {
