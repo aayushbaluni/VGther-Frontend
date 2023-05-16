@@ -60,19 +60,16 @@ const HandleChange=async(e)=>{
     }
 }
 const checkoutHandler=async(amount)=>{
-  const num=number[0];
-
+  console.log("handling")
     const {data}=await axios.post('https://v-gther-server-1.vercel.app/api/checkout',{
         amount,
         notes
     });
+    console.log("yup");
    const order=data.order;
     console.log(data);
-    console.log(window)
-    const {data2}=await axios.post('https://v-gther-server-1.vercel.app/api/paymentverificationadmin',{
-      isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount,parent_number:number[0]
-    });
-    console.log(data2)
+    const {data2}=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:"order_Lo1aON26TvRuMt",referer:"Kunal",amount:123,parent_number:"919413465367"});
+  console.log(data2);
     
 }
 const [haveCoupon, setHaveCoupon] = useState(false);
