@@ -50,7 +50,10 @@ const HandleChange=async()=>{
     }
 }
     console.log(notes)
-    
+    if(times%5===0){
+        checkoutHandler(times*300)
+    }
+    else
     checkoutHandler(times*350)
 }
 const checkoutHandler=async(amount)=>{
@@ -80,7 +83,7 @@ const checkoutHandler=async(amount)=>{
             contact:isLogedin.mobile.number.toString().slice(2,12)   
         },
         notes:{
-            "address":"RazorPay Coorporate Office"
+            "address":"Jaipur Rajasthan 302015"
         },
         theme:{
             "color":"#121212"
@@ -147,7 +150,7 @@ const handleReferralCodeChange = (event) => {
               I agree to the terms and conditions
             </Checkbox>
           </Box>
-            <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} onClick={HandleChange}> Proceed For Payment of Rs. {350*times} </Button>
+            <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} onClick={HandleChange}> Proceed For Payment of Rs. {times%5==0?300*times:350*times} </Button>
         </Box>
 
 

@@ -14,6 +14,8 @@ import React, { useState,useEffect } from 'react';
 
 import MyTickets from "./MyTickets";
 import Footer from "./Footer";
+import ContactUs from "./Contactus";
+import Cancellation from "./cancellation";
 function App() {
   const [isLogedin,setisLogedin] = useState({mobile:{number:null}});
   useEffect(() => {
@@ -42,6 +44,8 @@ function App() {
       <Route path="/myTickets" element={<MyTickets isLogedin={isLogedin}/>}/>
       <Route path="/legal/privacy" element={<Privacy/>}/>
       <Route path="/legal/terms" element={<Terms/>}/>
+      <Route path="/contactus" element={<ContactUs/>}/>
+      <Route path="/legal/cancellation" element={<Cancellation/>}/>
     </Routes>
     <Footer/>
    </Router>
