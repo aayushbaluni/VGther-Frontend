@@ -2,6 +2,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 
 function ContactUs() {
   return (
+    <div style={{ backgroundColor: 'black', color: 'white',padding:"40px" }}>
     <Box>
       <Heading>Contact Us</Heading>
       <Text>
@@ -16,6 +17,8 @@ function ContactUs() {
         Email: contact@vgthr.com
       </Text>
     </Box>
+    </div>
+
   );
 }
 

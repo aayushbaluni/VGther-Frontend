@@ -37,6 +37,7 @@ const Footer = () => {
       alignItems="center"
       direction={{ base: 'column', md: 'row' }}
       bgColor={'black'}
+    
       
     >
       <Link href="#">

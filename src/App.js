@@ -4,9 +4,6 @@ import PaymentSucess from "./PaymentSucess";
 import Event from "./Event";
 import Details from "./Details";
 import Header from "./Header";
-import Login from "./Login";
-import OtpBox from "./OtpScreen";
-import SignUp from "./SignUp";
 import Privacy from "./Privacy";
 import Terms from "./Terms";
 import Scrolltop from "./Scrolltop";
@@ -15,7 +12,7 @@ import React, { useState,useEffect } from 'react';
 import MyTickets from "./MyTickets";
 import Footer from "./Footer";
 import ContactUs from "./Contactus";
-import Cancellation from "./cancellation";
+import Cancellation from "./Cancellation";
 function App() {
   const [isLogedin,setisLogedin] = useState({mobile:{number:null}});
   useEffect(() => {

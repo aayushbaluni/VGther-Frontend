@@ -2,6 +2,7 @@ import { Box, Heading, Text, Link } from "@chakra-ui/react";
 
 function Cancellation() {
   return (
+    <div style={{ backgroundColor: 'black', color: 'white',padding:"40px" }}>
     <Box>
       <Heading as="h1" fontSize="26px" color="#000000" mt={4}>
         RETURN POLICY
@@ -34,6 +35,7 @@ function Cancellation() {
         .
       </Text>
     </Box>
+    </div>
   );
 }
 
