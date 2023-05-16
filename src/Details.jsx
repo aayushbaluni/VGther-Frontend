@@ -20,7 +20,7 @@ const Details = ({isLogedin}) => {
 const  location=useLocation();
 const times=location.state;
 const name= Array(location.state).fill('');
-const codes= Array(location.state).fill('');
+const codes= new Array(location.state).fill('');
 const number=new Array(location.state).fill(0);
 
 
