@@ -70,7 +70,7 @@ const checkoutHandler=async(amount)=>{
     console.log(data);
     console.log(window)
     const {data2}=await axios.post('https://v-gther-server-1.vercel.app/api/paymentverificationadmin',{
-        isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount
+      isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount,parent_number:number[0]
     });
     console.log(data2)
     

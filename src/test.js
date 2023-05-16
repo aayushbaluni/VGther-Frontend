@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 
   const payload = {
-    waId: "999eb4e12a1840c1b06c8ea42d161b6d",
+    waId: "9cbd4196579846dab359d3fc7dc108a5",
   };
   const headers = {
     clientId: "02fz9i8d",
@@ -13,23 +13,10 @@ const jwt = require("jsonwebtoken");
     "Content-Type": "application/json",
   };
 async function run(){
-var isLogedin = {token:"999eb4e12a1840c1b06c8ea42d161b6d",mobile:{number:"919413465367"}}
+var isLogedin = {token:"9cbd4196579846dab359d3fc7dc108a5",mobile:{number:"919413465367"}}
 
-  // const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/getall",isLogedin);
-  // console.log(data);
-  const axios = require('axios');
-
-// Replace 'http://localhost:3000' with your actual server URL
-const serverUrl = 'https://v-gther-server-1.vercel.app/user/coupon';
-const couponCode = 'SUMMER25'; // Replace with your desired coupon code
-
-axios.post(`${serverUrl}`, { code: couponCode })
-  .then((response) => {
-    console.log('Discount Amount:', response.data.discountAmount);
-  })
-  .catch((error) => {
-    console.error('Error:', error.response.data.message);
-  });
-
+  const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:"order_Lo1aON26TvRuMt",referer:"Kunal",amount:123,parent_number:"919413465367"});
+  console.log(data);
+  console.log({isLogedin,razorpay_order_id:"order_Lo1aON26TvRuMt",referer:"Kunal",amount:123});
 }
 run();
