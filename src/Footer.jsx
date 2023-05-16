@@ -2,7 +2,7 @@ import { Stack, HStack, Divider, Image, IconButton, LinkProps,useMediaQuery } fr
 // Here we have used react-icons package for the icons
 import { FaGithub, FaInstagram, FaMailBulk } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
-const links = [{id:'Contact Us',href:"/contactus"}, {id:'Join Events',href:"/events"}, {id:'Careers',href:"#"}, {id:'Cancellation/Refund Policy',href:"/legal/cancellation"}, {id:'Terms of use',href:"/legal/terms"}, {id:'Privacy policy',href:"/legal/privacy"}];
+const links = [{id:'Contact Us',href:"/contactus"}, {id:'Join Events',href:"/events"}, {id:'Careers',href:"#"}, {id:'Terms of use',href:"/legal/terms"}, {id:'Privacy policy',href:"/legal/privacy"},{id:'Cancellation/Refund Policy',href:"/legal/cancellation"}];
 
 const accounts = [
   {

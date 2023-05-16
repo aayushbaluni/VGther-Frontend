@@ -59,7 +59,7 @@ const Header = (props) => {
         <Link to={'/events'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>Events</Button></Link>
         <HashLink to={'/#contact'} smooth><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>ContactUs</Button></HashLink>
         {
-          isLogedin!==null? <Link to={'/myTickets'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
+          isLogedin.mobile.number !== null? <Link to={'/myTickets'}><Button variant={'ghost'} textColor={'white'}  onClick={onClose} colorScheme='black'>My Tickets</Button></Link>:<></>
         }
 
             </VStack>

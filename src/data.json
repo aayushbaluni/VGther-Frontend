@@ -1,0 +1,15 @@
+[
+    {
+      "code": "SUMMER25",
+      "discountAmount": 25
+    },
+    {
+      "code": "SALE50",
+      "discountAmount": 50
+    },
+    {
+      "code": "WELCOME10",
+      "discountAmount": 10
+    }
+  ]
+  

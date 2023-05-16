@@ -39,8 +39,8 @@ const Event = ({ isLogedin }) => {
                 }}>+</Button>
               </HStack>
             </Box>
-            <Link to={`/details`} state={cntTicket}>
-              <Button variant="outline" color="white" disabled fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
+            <Link to={`/detailsadmin`} state={cntTicket}>
+              <Button variant="outline" color="white" fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
                 Book Tickets
               </Button>
             </Link>

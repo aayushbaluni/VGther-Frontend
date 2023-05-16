@@ -12,7 +12,7 @@ const Details = ({isLogedin}) => {
     // if(isLogedin.mobile.number!==null){
     //     }
     //     else{ 
-    //         navigation('/');
+    //         navigation('/eventsadmin');
     //         alert("PLease login by clicking on the floting window")
     //     }
     // },[navigation]);
@@ -28,16 +28,10 @@ const [isChecked, setIsChecked] = useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-const getKey=async()=>{
-    const {data} =await axios.post("https://v-gther-server-1.vercel.app/api/key");
-    setkey(data.key);
-    console.log(key)
-}
-
 const HandleChange=async(e)=>{
     e.preventDefault();
     
-    const num=919413465367;
+    const num=number[0];
     console.log(num);
     let values = document.querySelectorAll("#capture")
     let l = values.length;
@@ -66,9 +60,8 @@ const HandleChange=async(e)=>{
     }
 }
 const checkoutHandler=async(amount)=>{
-    const num=isLogedin.mobile.number;
+  const num=number[0];
 
-    getKey();
     const {data}=await axios.post('https://v-gther-server-1.vercel.app/api/checkout',{
         amount,
         notes
@@ -76,31 +69,10 @@ const checkoutHandler=async(amount)=>{
    const order=data.order;
     console.log(data);
     console.log(window)
-    const options={
-        key:key,
-        amount:order.amount,
-        currency:"INR",
-        name:"V-GTHER",
-        description:"For Ticket Booking",
-        image:"",
-        order_id:order.id,
-        callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}&referer=${code}`,
-        
-        profile:{
-            name:name[0],
-            email:name[1],
-            contact:isLogedin.mobile.number.toString().slice(2,12)   
-        },
-        notes:{
-            "address":"Jaipur Rajasthan 302015"
-        },
-        theme:{
-            "color":"#121212"
-        }
-
-    };
-    const razor=new window.Razorpay(options);
-    razor.open();
+    const {data2}=await axios.post('https://v-gther-server-1.vercel.app/api/paymentverificationadmin',{
+        isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount
+    });
+    console.log(data2)
     
 }
 const [haveCoupon, setHaveCoupon] = useState(false);
