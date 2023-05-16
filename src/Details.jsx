@@ -20,10 +20,9 @@ const Details = ({isLogedin}) => {
 const  location=useLocation();
 const times=location.state;
 const name= Array(location.state).fill('');
-const codes= new Array(location.state).fill('');
 const number=new Array(location.state).fill(0);
 
-
+const [code,setCode] = useState('');
 const [key, setkey] = useState("")
 const getKey=async()=>{
     const {data} =await axios.post("https://v-gther-server-1.vercel.app/api/key");
@@ -76,7 +75,7 @@ const checkoutHandler=async(amount)=>{
         description:"For Ticket Booking",
         image:"",
         order_id:order.id,
-        callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}&referer=${codes[1]}`,
+        callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}&referer=${code}`,
         
         profile:{
             name:name[0],
@@ -141,7 +140,7 @@ const handleReferralCodeChange = (event) => {
             </Checkbox>
             {haveReferralCode && (
               <>
-                <Input marginLeft={2} variant={'outline'} color={'white'} placeholder='Enter Referral Code' onChange={(e)=>codes[1]=e.target.value} focusBorderColor='white' textColor={'white'} w={['60%', '30%']} />
+                <Input marginLeft={2} variant={'outline'} color={'white'} placeholder='Enter Referral Code' onChange={(e)=>setCode(e.target.value)} focusBorderColor='white' textColor={'white'} w={['60%', '30%']} />
                 <Button marginLeft={2} colorScheme='teal' variant="ghost" onClick={verifyReferal}>
                   Apply
                 </Button>
