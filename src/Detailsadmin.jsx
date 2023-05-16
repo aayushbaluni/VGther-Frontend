@@ -63,15 +63,15 @@ const HandleChange=async(e)=>{
         checkoutHandler(times*350,notes,num)
     }
 }
-const checkoutHandler=async(amount,notes,num)=>{
+const checkoutHandler=async(amount,notes)=>{
     const {data}=await axios.post('https://v-gther-server-1.vercel.app/api/checkout',{
         amount,
         notes
     });
     console.log("yup");
+    console.log(notes[0].parent_number);
    const order=data.order;
-    console.log(data);
-   axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount/100,parent_number:`91${num}`}).then((response) =>{
+   axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount/100,parent_number:`91${notes[0].parent_number}`}).then((response) =>{
     setIsLoading(false) 
    if(response.data.status===200){
       console.log(response.data.ticket_id);
