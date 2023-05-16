@@ -1,7 +1,7 @@
 import { Checkbox,Box, Button, Center, Heading, Input, Text } from '@chakra-ui/react'
 import React, { useState,useEffect } from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
-
+import ErrorMessage from './ErrorMessage';
 
 import axios  from 'axios'
 
@@ -20,6 +20,7 @@ const Details = ({isLogedin}) => {
 const  location=useLocation();
 const times=location.state;
 const name= Array(location.state).fill('');
+const codes= Array(location.state).fill('');
 const number=new Array(location.state).fill(0);
 
 
@@ -64,7 +65,7 @@ const checkoutHandler=async(amount)=>{
         amount,
         notes
     });
-   const  order=data.order;
+   const order=data.order;
     console.log(data);
     console.log(window)
     const options={
@@ -75,7 +76,7 @@ const checkoutHandler=async(amount)=>{
         description:"For Ticket Booking",
         image:"",
         order_id:order.id,
-        callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}`,
+        callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}&referer=${codes[1]}`,
         
         profile:{
             name:name[0],
@@ -96,7 +97,9 @@ const checkoutHandler=async(amount)=>{
 }
 const [haveCoupon, setHaveCoupon] = useState(false);
 const [haveReferralCode, setHaveReferralCode] = useState(false);
+const verifyReferal = ()=>{
 
+}
 const handleCouponChange = (event) => {
   setHaveCoupon(event.target.checked);
 };
@@ -138,8 +141,8 @@ const handleReferralCodeChange = (event) => {
             </Checkbox>
             {haveReferralCode && (
               <>
-                <Input marginLeft={2} variant={'outline'} color={'white'} placeholder='Enter Referral Code' focusBorderColor='white' textColor={'white'} w={['60%', '30%']} />
-                <Button marginLeft={2} colorScheme='teal' variant="ghost">
+                <Input marginLeft={2} variant={'outline'} color={'white'} placeholder='Enter Referral Code' onChange={(e)=>codes[1]=e.target.value} focusBorderColor='white' textColor={'white'} w={['60%', '30%']} />
+                <Button marginLeft={2} colorScheme='teal' variant="ghost" onClick={verifyReferal}>
                   Apply
                 </Button>
               </>
