@@ -54,7 +54,7 @@ const HandleChange=async()=>{
     checkoutHandler(times*350)
 }
 const checkoutHandler=async(amount)=>{
-    const num=await localStorage.getItem("number");
+    const num=isLogedin.mobile.number;
 
     getKey();
     const {data}=await axios.post('https://v-gther-server-1.vercel.app/api/checkout',{
@@ -75,9 +75,9 @@ const checkoutHandler=async(amount)=>{
         callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}`,
         
         profile:{
-            name:"Kunal Sharma",
-            email:"abaluni6@gmail.com",
-            contact:"9413465367"   
+            name:name[0],
+            email:name[1],
+            contact:isLogedin.mobile.number.toString().slice(2,12)   
         },
         notes:{
             "address":"RazorPay Coorporate Office"
