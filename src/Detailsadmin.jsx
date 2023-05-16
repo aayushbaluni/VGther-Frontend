@@ -1,4 +1,4 @@
-import { Checkbox,Box, Button, Center, Heading, Input, Text } from '@chakra-ui/react'
+import { Checkbox,Box, Button, Center,Spinner, Heading, Input, Text } from '@chakra-ui/react'
 import React, { useState,useEffect } from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
@@ -30,6 +30,7 @@ const number=new Array(location.state).fill(0);
 const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -37,6 +38,7 @@ const [isChecked, setIsChecked] = useState(false);
 const HandleChange=async(e)=>{
     e.preventDefault();
     setTicket("");
+    setIsLoading(true)
     const num=number[0];
     let values = document.querySelectorAll("#capture")
     let l = values.length;
@@ -70,7 +72,8 @@ const checkoutHandler=async(amount,notes,num)=>{
    const order=data.order;
     console.log(data);
    axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount/100,parent_number:`91${num}`}).then((response) =>{
-    if(response.data.status===200){
+    setIsLoading(false) 
+   if(response.data.status===200){
       console.log(response.data.ticket_id);
       setTicket(response.data.ticket_id)
     }
@@ -93,6 +96,7 @@ const checkoutHandler=async(amount,notes,num)=>{
       });
 
     }
+    
    
    
    })
@@ -150,6 +154,11 @@ const handleReferralCodeChange = (event) => {
       I agree to the website terms and conditions
     </Checkbox>
           </Box>
+          {
+            isLoading?
+            <Spinner size="lg" color="white" marginTop="10" />:""
+          }
+          
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
           {ticket.length>0?<Link to={`/eventsadmin`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
