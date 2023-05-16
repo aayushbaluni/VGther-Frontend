@@ -26,7 +26,6 @@ const Details = ({isLogedin}) => {
 const  location=useLocation();
 const times=location.state;
 const name= Array(location.state).fill('');
-const number=new Array(location.state).fill(0);
 const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
@@ -39,9 +38,11 @@ const HandleChange=async(e)=>{
     e.preventDefault();
     setTicket("");
     setIsLoading(true)
-    const num=number[0];
+    
     let values = document.querySelectorAll("#capture")
     let l = values.length;
+    var num=parseInt(document.querySelectorAll("#capture")[1].value);
+    console.log(num);
     var jSon = [];
     for (var i = 0; i < l - 1;) {
         jSon.push(
@@ -57,10 +58,10 @@ const HandleChange=async(e)=>{
     if(notes.length!==0){
         console.log(notes)
         if(times%5===0){
-            checkoutHandler(times*300,notes,num)
+            checkoutHandler(times*300,notes)
         }
         else
-        checkoutHandler(times*350,notes,num)
+        checkoutHandler(times*350,notes)
     }
 }
 const checkoutHandler=async(amount,notes)=>{
@@ -72,7 +73,8 @@ const checkoutHandler=async(amount,notes)=>{
     console.log(notes[0].parent_number);
    const order=data.order;
    axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount/100,parent_number:`91${notes[0].parent_number}`}).then((response) =>{
-    setIsLoading(false) 
+   console.log(JSON.stringify({isLogedin,razorpay_order_id:order.id,referer:code,amount:order.amount/100,parent_number:`91${notes[0].parent_number}`})) 
+   setIsLoading(false) 
    if(response.data.status===200){
       console.log(response.data.ticket_id);
       setTicket(response.data.ticket_id)
@@ -156,7 +158,7 @@ const handleReferralCodeChange = (event) => {
           </Box>
           {
             isLoading?
-            <Spinner size="lg" color="white" marginTop="10" />:""
+            <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }
           
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}

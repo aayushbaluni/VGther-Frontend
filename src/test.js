@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 
   const payload = {
-    waId: "9cbd4196579846dab359d3fc7dc108a5",
+    waId: "248ef842ce174bca8eed1ed7129357d6",
   };
   const headers = {
     clientId: "02fz9i8d",
@@ -13,10 +13,34 @@ const jwt = require("jsonwebtoken");
     "Content-Type": "application/json",
   };
 async function run(){
-var isLogedin = {token:"ff1f4974deb94b31b248b4ca8642afad",mobile:{number:"919413465367"}}
 
-  const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{isLogedin,razorpay_order_id:"order_Lo1aON26TvRuMt",referer:"Kunal",amount:123,parent_number:"919413465367"});
+//   axios
+//   .post("https://vgthr.authlink.me", payload, { headers: headers })
+//   .then(async (response) => {
+// console.log(response.data);
+//   })
+  const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{
+    isLogedin: {
+      token: "248ef842ce174bca8eed1ed7129357d6",
+      timestamp: "2023-05-17 02:51:15",
+      timezone: "+05:30",
+      mobile: {
+        name: "iamkunal9",
+        number: "919413465367"
+      },
+      email: {
+        name: "kunal sharma",
+        email: "ks4428560@gmail.com"
+      },
+      waNumber: "919413465367",
+      waName: "iamkunal9"
+    },
+    razorpay_order_id: "order_LqTuVUnugK7JQ8",
+    referer: "NA",
+    amount: 350,
+    parent_number: "919413465367"
+  });
   console.log(data);
-  console.log({isLogedin,razorpay_order_id:"order_Lo1aON26TvRuMt",referer:"Kunal",amount:123});
+  console.log();
 }
 run();
