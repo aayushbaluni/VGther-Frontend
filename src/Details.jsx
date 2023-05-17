@@ -180,7 +180,7 @@ const handleReferralCodeChange = (event) => {
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }
           {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center">
-          <Image w="100px" src={require('./assets/Eticket.png')} alt="ETicket" />
+          <Image w="100px" src={require('./assets/qr.jpeg')} alt="ETicket" />
         </Flex>:""}
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
