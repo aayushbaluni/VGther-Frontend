@@ -4,8 +4,9 @@ import { useLocation,useNavigate } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 import { Link } from 'react-router-dom';
 import axios  from 'axios'
+import { QRCode } from 'react-qrcode-logo';
 import { useToast } from '@chakra-ui/react';
-import upiqr from 'upiqr';
+
 const Details = ({isLogedin}) => {
   const toast = useToast();
     const navigation = useNavigate();
@@ -30,23 +31,10 @@ const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
-const [qrbase,setQrbase] = useState('')
 const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW', 'SNGH', '09AG', '3PBY', 'IEN0', '8N6J']
 
   const handleCheckboxChange = () => {
-    var amt = times%5==0?300*times:350*times
-    upiqr({
-      payeeVPA: "BHARATPE09912886953@yesbankltd",
-      payeeName: "VGTHR",
-      amount:amt
-    })
-    .then((upi) => {
-      console.log(upi.qr);      // data:image/png;base64,eR0lGODP...
-      setQrbase(upi.qr)
-      setIsChecked(!isChecked);
-    })
-    
-    
+    setIsChecked(!isChecked);
   };
 const HandleChange=async(e)=>{
     e.preventDefault();
@@ -223,7 +211,7 @@ const handleReferralCodeChange = (event) => {
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }
           {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
-          <Image w="135px" src={qrbase} alt="ETicket" />
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${times%5==0?300*times:350*times}&cu=INR&tn=Pay to VGTHR`} />
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId/RefId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
         </Flex>:""}
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
