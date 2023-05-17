@@ -66,6 +66,9 @@ const HandleChange=async(e)=>{
     }
 }
 const checkoutHandler=async(amount,notes)=>{
+  try{
+
+  
     const {data}=await axios.post('https://v-gther-server-1.vercel.app/api/checkout',{
         amount,
         notes
@@ -80,16 +83,33 @@ const checkoutHandler=async(amount,notes)=>{
     razorpay_payment_id: txid,
     parent_number: `91${notes[0].parent_number}`
   }).then((response) =>{
-  
    setIsLoading(false) 
    if(response.data.status===200){
       console.log(response.data.ticket_id);
       setTicket(response.data.ticket_id)
     }
-    else if(response.data.status===404){
+    else if(response.data.status===403){
       toast({
-        title: 'Login Expired',
-        description: 'Please Login and try again',
+        title: 'Amount Didnt Match',
+        description: 'You didnt paid the exact amount shown on the page',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+    else if(response.data.status===401){
+      toast({
+        title: 'Ticket Already Exists',
+        description: 'Ticket with this payment id already exists',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+    else if(response.data.status===402){
+      toast({
+        title: 'No Payment received',
+        description: 'Please pay the respected amount to the given qr code first',
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -98,7 +118,7 @@ const checkoutHandler=async(amount,notes)=>{
     else{
       toast({
         title: 'Error Occured',
-        description: 'Please Try again later',
+        description: 'Please Try again later or contact the support team',
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -110,7 +130,17 @@ const checkoutHandler=async(amount,notes)=>{
    
    })
   
-    
+  }
+  catch(err){
+    setIsLoading(false)
+    toast({
+      title: 'Error',
+      description: 'Error occurred kindly resubmit the request',
+      status: 'warning',
+      duration: 5000,
+      isClosable: true,
+    });
+  } 
 }
 const [haveCoupon, setHaveCoupon] = useState(false);
 const [haveReferralCode, setHaveReferralCode] = useState(false);
@@ -181,10 +211,11 @@ const handleReferralCodeChange = (event) => {
           }
           {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center">
           <Image w="100px" src={require('./assets/qr.jpeg')} alt="ETicket" />
+          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
         </Flex>:""}
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
-          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
-          {ticket.length>0?<Link to={`/eventsadmin`}>
+          
+          {ticket.length>0?<Link to={`/events`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
             </Link>:<Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginLeft={['auto','40%']} > Buy Ticket of Rs. {times%5==0?300*times:350*times} </Button>}
             </form>
