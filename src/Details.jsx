@@ -1,56 +1,49 @@
-import { Checkbox,Box, Button, Center, Heading, Input, Text } from '@chakra-ui/react'
+import { Checkbox,Box,Flex,Image, Button, Center,Spinner, Heading, Input, Text } from '@chakra-ui/react'
 import React, { useState,useEffect } from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
-
+import { Link } from 'react-router-dom';
 import axios  from 'axios'
-
 import { useToast } from '@chakra-ui/react';
+
 const Details = ({isLogedin}) => {
-    
-    window.scroll(0,0)
-    const toast = useToast();
+  const toast = useToast();
     const navigation = useNavigate();
     useEffect(() => {
-        //isLogedin.mobile.number===null
-    if(true){
-        
-        navigation('/');
-          toast({
-            title: 'Not Authorized',
-            description: 'Not Authorized',
-            status: 'warning',
-            duration: 5000,
-            isClosable: true,
-          });
-    }
+      window.scroll(0,0)
+          if (isLogedin.mobile.number === null) {
+            navigation('/events');
+            toast({
+              title: 'Login Required',
+              description: 'Please login by clicking on the floating window',
+              status: 'warning',
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+       
     },[isLogedin, navigation, toast]);
-    const [notes, setnotes] = useState([]);
 const  location=useLocation();
 const times=location.state;
 const name= Array(location.state).fill('');
-const number=new Array(location.state).fill(0);
 const [code,setCode] = useState('NA');
-const [key, setkey] = useState("")
+const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
+const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW', 'SNGH', '09AG', '3PBY', 'IEN0', '8N6J']
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-const getKey=async()=>{
-    const {data} =await axios.post("https://v-gther-server-1.vercel.app/api/key");
-    setkey(data.key);
-    console.log(key)
-}
-
 const HandleChange=async(e)=>{
     e.preventDefault();
+    setTicket("");
+    setIsLoading(true)
     
-    const num=919413465367;
-    console.log(num);
     let values = document.querySelectorAll("#capture")
     let l = values.length;
-    console.log(values);
+    var num=parseInt(document.querySelectorAll("#capture")[1].value);
+    console.log(num);
     var jSon = [];
     for (var i = 0; i < l - 1;) {
         jSon.push(
@@ -62,61 +55,80 @@ const HandleChange=async(e)=>{
         )
         i += 2
     }
-    console.log(jSon);
-    console.log(l);
-    setnotes(jSon);
+    var notes = jSon;
     if(notes.length!==0){
         console.log(notes)
         if(times%5===0){
-            checkoutHandler(times*300)
+            checkoutHandler(times*300,notes)
         }
         else
-        checkoutHandler(times*350)
+        checkoutHandler(times*350,notes)
     }
 }
-const checkoutHandler=async(amount)=>{
-    const num=isLogedin.mobile.number;
-
-    getKey();
+const checkoutHandler=async(amount,notes)=>{
     const {data}=await axios.post('https://v-gther-server-1.vercel.app/api/checkout',{
         amount,
         notes
     });
+    console.log("yup");
+    console.log(notes[0].parent_number);
    const order=data.order;
-    console.log(data);
-    console.log(window)
-    const options={
-        key:key,
-        amount:order.amount,
-        currency:"INR",
-        name:"V-GTHER",
-        description:"For Ticket Booking",
-        image:"",
-        order_id:order.id,
-        callback_url:`https://v-gther-server-1.vercel.app/api/paymentverification?parent_number=${num}&referer=${code}`,
-        
-        profile:{
-            name:name[0],
-            email:name[1],
-            contact:isLogedin.mobile.number.toString().slice(2,12)   
-        },
-        notes:{
-            "address":"Jaipur Rajasthan 302015"
-        },
-        theme:{
-            "color":"#121212"
-        }
+   var txid = document.getElementById("txid").value
+   axios.post("https://v-gther-server-1.vercel.app/api/paymentverification",{
+    razorpay_order_id: order.id,
+    referer: code,
+    razorpay_payment_id: txid,
+    parent_number: notes[0].parent_number
+  }).then((response) =>{
+  
+   setIsLoading(false) 
+   if(response.data.status===200){
+      console.log(response.data.ticket_id);
+      setTicket(response.data.ticket_id)
+    }
+    else if(response.data.status===404){
+      toast({
+        title: 'Login Expired',
+        description: 'Please Login and try again',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+    else{
+      toast({
+        title: 'Error Occured',
+        description: 'Please Try again later',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
 
-    };
-    const razor=new window.Razorpay(options);
-    razor.open();
+    }
+    
+   
+   
+   })
+  
     
 }
 const [haveCoupon, setHaveCoupon] = useState(false);
 const [haveReferralCode, setHaveReferralCode] = useState(false);
 const verifyReferal = ()=>{
 var code = document.getElementById("refer").value
-setCode(code);
+if(refCodes.includes(code)){
+  setCode(code);
+}
+else{
+  toast({
+    title: 'Invalid referal code',
+    description: 'Please enter correct referal code',
+    status: 'warning',
+    duration: 5000,
+    isClosable: true,
+  });
+}
+
 }
 const handleCouponChange = (event) => {
   setHaveCoupon(event.target.checked);
@@ -147,14 +159,12 @@ const handleReferralCodeChange = (event) => {
             {haveReferralCode && (
               <>
                 <Input isDisabled={code!=="NA"} marginLeft={2} id="refer" variant={'outline'} color={'white'} placeholder='Enter Referral Code' focusBorderColor='white' textColor={'white'} w={['60%', '30%']} />
-                
                 {code!="NA"?<ErrorMessage message={"Applied"} error={"success"}/>:<Button marginLeft={2} colorScheme='teal' variant="ghost" onClick={verifyReferal}>
                   Apply
                 </Button>}
               </>
             )}
           </Box>
-          
 <Box display="flex" alignItems="center" marginTop={4}>
           <Checkbox
       colorScheme="white"
@@ -165,9 +175,20 @@ const handleReferralCodeChange = (event) => {
       I agree to the website terms and conditions
     </Checkbox>
           </Box>
-
-            <Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginLeft={['auto','40%']} > Proceed For Payment of Rs. {times%5==0?300*times:350*times} </Button>
+          {
+            isLoading?
+            <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
+          }
+          {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center">
+          <Image w="100px" src={require('./assets/Eticket.png')} alt="ETicket" />
+        </Flex>:""}
+          {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
+          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
+          {ticket.length>0?<Link to={`/eventsadmin`}>
+          <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
+            </Link>:<Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginLeft={['auto','40%']} > Buy Ticket of Rs. {times%5==0?300*times:350*times} </Button>}
             </form>
+            
             {/* <Box display="flex" alignItems="center" marginTop={4}>
             <Checkbox colorScheme="white" color="white" defaultIsChecked onChange={handleCouponChange}>
               I have a coupon

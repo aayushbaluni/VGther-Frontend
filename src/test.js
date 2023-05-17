@@ -19,31 +19,16 @@ const { default: axios } = require("axios");
 // //   .then(async (response) => {
 // // console.log(response.data);
 // //   })
-//   const {data}=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverificationadmin",{
-//     isLogedin: {
-//       token: "248ef842ce174bca8eed1ed7129357d6",
-//       timestamp: "2023-05-17 02:51:15",
-//       timezone: "+05:30",
-//       mobile: {
-//         name: "iamkunal9",
-//         number: "919413465367"
-//       },
-//       email: {
-//         name: "kunal sharma",
-//         email: "ks4428560@gmail.com"
-//       },
-//       waNumber: "919413465367",
-//       waName: "iamkunal9"
-//     },
-//     razorpay_order_id: "order_LqTuVUnugK7JQ8",
-//     referer: "NA",
-//     amount: 350,
-//     parent_number: "919413465367"
-//   });
-//   console.log(data);
-//   console.log();
-// }
-// run();
+async function run(){
+  const response=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverification",{
+    razorpay_order_id: "order_LqTuVUnugK7JQ8",
+    referer: "NA",
+    razorpay_payment_id: 350316403348,
+    parent_number: "919413465367"
+  });
+  console.log(response.data);
+}
+run();
 // import axios from 'axios';
 
 // async function run(){
@@ -98,35 +83,37 @@ const { default: axios } = require("axios");
 // var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
 
 // import axios from 'axios';
-const moment = require('moment-timezone');
 
-const indianTimezone = 'Asia/Kolkata';
-const currentTime = moment().tz(indianTimezone).valueOf();
 
-console.log(currentTime);
-axios.get('https://payments-tesseract.bharatpe.in/api/v1/merchant/transactions', {
-  params: {
-    'module': 'PAYMENT_QR',
-    'merchantId': '41134598',
-    'sDate': '1684261800000',
-    'eDate': currentTime.toString()
-  },
-  headers: {
-    'authority': 'payments-tesseract.bharatpe.in',
-    'accept': 'application/json, text/javascript, */*; q=0.01',
-    'accept-language': 'en-GB,en;q=0.8',
-    'origin': 'https://enterprise.bharatpe.in',
-    'referer': 'https://enterprise.bharatpe.in/',
-    'sec-ch-ua': '"Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"macOS"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-site',
-    'sec-gpc': '1',
-    'token': 'aa177567d8e44c448e2b7d81c0b2faa5',
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'
-  }
-}).then((response)=>{
-  console.log(response.data.data.transactions)
-})
+// const moment = require('moment-timezone');
+
+// const indianTimezone = 'Asia/Kolkata';
+// const currentTime = moment().tz(indianTimezone).valueOf();
+
+// console.log(currentTime);
+// axios.get('https://payments-tesseract.bharatpe.in/api/v1/merchant/transactions', {
+//   params: {
+//     'module': 'PAYMENT_QR',
+//     'merchantId': '41134598',
+//     'sDate': '1684261800000',
+//     'eDate': currentTime.toString()
+//   },
+//   headers: {
+//     'authority': 'payments-tesseract.bharatpe.in',
+//     'accept': 'application/json, text/javascript, */*; q=0.01',
+//     'accept-language': 'en-GB,en;q=0.8',
+//     'origin': 'https://enterprise.bharatpe.in',
+//     'referer': 'https://enterprise.bharatpe.in/',
+//     'sec-ch-ua': '"Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99"',
+//     'sec-ch-ua-mobile': '?0',
+//     'sec-ch-ua-platform': '"macOS"',
+//     'sec-fetch-dest': 'empty',
+//     'sec-fetch-mode': 'cors',
+//     'sec-fetch-site': 'same-site',
+//     'sec-gpc': '1',
+//     'token': 'aa177567d8e44c448e2b7d81c0b2faa5',
+//     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'
+//   }
+// }).then((response)=>{
+//   console.log(response.data.data.transactions)
+// })
