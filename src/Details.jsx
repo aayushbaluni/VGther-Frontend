@@ -4,6 +4,7 @@ import { useLocation,useNavigate } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 import { Link } from 'react-router-dom';
 import axios  from 'axios'
+import QRCode from 'react-qr-code';
 import { useToast } from '@chakra-ui/react';
 
 const Details = ({isLogedin}) => {
@@ -209,9 +210,9 @@ const handleReferralCodeChange = (event) => {
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }
-          {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center">
-          <Image w="100px" src={require('./assets/qr.jpeg')} alt="ETicket" />
-          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
+          {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${times%5==0?300*times:350*times}&cu=INR&tn=Pay to VGTHR`} size="15vh" bgColor="white" />
+          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId/RefId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
         </Flex>:""}
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
           
