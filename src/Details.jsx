@@ -78,7 +78,7 @@ const checkoutHandler=async(amount,notes)=>{
     razorpay_order_id: order.id,
     referer: code,
     razorpay_payment_id: txid,
-    parent_number: notes[0].parent_number
+    parent_number: `91${notes[0].parent_number}`
   }).then((response) =>{
   
    setIsLoading(false) 
