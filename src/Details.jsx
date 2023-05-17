@@ -210,8 +210,10 @@ const handleReferralCodeChange = (event) => {
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }
-          {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
-          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${times%5==0?300*times:350*times}&cu=INR&tn=Pay to VGTHR`} />
+          {
+          //times%5==0?300*times:350*times
+          isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=1&cu=INR&tn=Pay to VGTHR`} />
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId/RefId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
         </Flex>:""}
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
