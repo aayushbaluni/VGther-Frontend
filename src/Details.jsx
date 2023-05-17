@@ -36,6 +36,19 @@ const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW'
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+  function handleDownload() {
+    // Get the canvas element
+    const canvas = document.querySelectorAll("canvas");
+
+    // Get the data URL of the canvas image
+    const dataURL = canvas[0].toDataURL();
+    // Create a download link
+    const link = document.createElement('a');
+    link.download = 'qrcode-vgthr.png';
+    link.href = dataURL;
+
+    link.click();
+  }
 const HandleChange=async(e)=>{
     e.preventDefault();
     setTicket("");
@@ -51,10 +64,11 @@ const HandleChange=async(e)=>{
             {
                 name: values[i].value,
                 number: parseInt(values[i + 1].value),
+                college_id: values[i + 2].value,
                 parent_number:num.toString()
             }
         )
-        i += 2
+        i += 3
     }
     var notes = jSon;
     if(notes.length!==0){
@@ -180,6 +194,7 @@ const handleReferralCodeChange = (event) => {
                     <Text textColor={'white'}>Person {i+1}</Text>
                     <Input id="capture" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter Name' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
                     <Input id="capture" type="tel" pattern="[0-9]{10}" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter Phone Number' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
+                    <Input id="capture" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter College Id' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
                 </Box>
               )
             }
@@ -214,6 +229,16 @@ const handleReferralCodeChange = (event) => {
           //times%5==0?300*times:350*times
           isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
           <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=1&cu=INR&tn=Pay to VGTHR`} />
+          <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the transaction id in the below box </Text>
+                  <Button
+                    // colorScheme="blue"
+                    bg="greay.400"
+                    // color="white"
+                    variant={'ghost'} textColor={'white'} colorScheme='black'
+                    onClick={handleDownload}
+                    isFullWidth>
+                    Download QrCode
+                  </Button>
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId/RefId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
         </Flex>:""}
           {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}

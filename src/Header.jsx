@@ -29,7 +29,7 @@ const Header = (props) => {
   return (
     <HStack zIndex={'5'} h={'10vh'} w={'100%'} bgColor={'black'} padding={'10'} justifyContent={'space-between'} alignItems={'center'} borderBottom={'0.5px solid gray'} position={'sticky'} top={'0'}>
         {/* <Heading textColor={'white'} fontSize={'6vh'} w={['90%','50%']} fontFamily={'Castoro Titling'}>V-GTHR</Heading> */}
-        <Link href="#">
+        <Link href="/">
         <Image w="100px" src={require('./assets/vGatherbackWhite.png')} alt="vGatherbackWhite" />
       </Link>
        {

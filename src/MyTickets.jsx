@@ -82,6 +82,9 @@ function PaymentDetails({ val }) {
         <Text textColor="white" marginTop="5" fontSize="1.9vh">
           {val.number}
         </Text>
+        <Text textColor="white" marginTop="5" fontSize="1.9vh">
+        {val.college_id}
+      </Text>
         {val.refer==="NA"?"":
         <Text textColor="white" marginTop="5" fontSize="1.9vh">
         {val.refer}
