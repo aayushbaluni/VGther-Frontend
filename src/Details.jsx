@@ -212,8 +212,7 @@ const handleReferralCodeChange = (event) => {
           }
           {isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
           <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "100%" }}>
-    <QRCode viewBox={`0 0 256 256`} value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${times%5==0?300*times:350*times}&cu=INR&tn=Pay to VGTHR`} size={256}
-    style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
+    <QRCode viewBox={`0 0 256 256`} value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${times%5==0?300*times:350*times}&cu=INR&tn=Pay to VGTHR`} size="25vh" />
 </div>
           
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId/RefId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
