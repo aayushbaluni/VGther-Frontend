@@ -32,7 +32,7 @@ const Event = ({ isLogedin }) => {
             V-Gther
           </Text> */}
           <Heading textColor="white" fontSize="3vh">
-            Venu: Aray Main Campus
+            Venu: Arya Institute of Engineering and Technology
           </Heading>
           <Text textColor="white" marginTop="5" fontSize="1.9vh">
             Time: 6:00PM Onwards
@@ -57,7 +57,7 @@ const Event = ({ isLogedin }) => {
               </HStack>
             </Box>
             <Link to={`/`} state={cntTicket}>
-              <Button variant="outline" color="white" isDisabled={true} fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
+              <Button variant="outline" isDisabled={true} color="white" fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
                 Book Tickets
               </Button>
             </Link>
