@@ -30,6 +30,7 @@ const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
+const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW', 'SNGH', '09AG', '3PBY', 'IEN0', '8N6J']
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -109,7 +110,19 @@ const [haveCoupon, setHaveCoupon] = useState(false);
 const [haveReferralCode, setHaveReferralCode] = useState(false);
 const verifyReferal = ()=>{
 var code = document.getElementById("refer").value
-setCode(code);
+if(refCodes.includes(code)){
+  setCode(code);
+}
+else{
+  toast({
+    title: 'Invalid referal code',
+    description: 'Please enter correct referal code',
+    status: 'warning',
+    duration: 5000,
+    isClosable: true,
+  });
+}
+
 }
 const handleCouponChange = (event) => {
   setHaveCoupon(event.target.checked);
