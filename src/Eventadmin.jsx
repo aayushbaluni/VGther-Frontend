@@ -31,7 +31,7 @@ const Event = ({ isLogedin }) => {
             V-Gther
           </Text> */}
           <Heading textColor="white" fontSize="3vh">
-            Venu: Arya Institute of Engineering and Technology
+            Venue: Arya Institute of Engineering and Technology
           </Heading>
           <Text textColor="white" marginTop="5" fontSize="1.9vh">
             Time: 6:00PM Onwards
