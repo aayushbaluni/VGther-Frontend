@@ -22,6 +22,6 @@ export default function Scrolltop(){
             });
           };
     return(
-        <>{isVisible && (<div style={{cursor:"pointer",position:"fixed",zIndex:999,right:"24px",bottom:"7rem"}} onClick={scrollToTop}><img src="https://i.postimg.cc/XNGznn0f/icons8-collapse-arrow.gif"/></div>)}</>
+        <>{isVisible && (<div style={{cursor:"pointer",position:"fixed",zIndex:999,right:"24px",bottom:"7rem"}} onClick={scrollToTop}><img src="https://i.postimg.cc/XNGznn0f/icons8-collapse-arrow.gif" style={{borderRadius:"50%"}}/></div>)}</>
     )
 }

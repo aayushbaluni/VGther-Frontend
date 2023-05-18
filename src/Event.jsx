@@ -39,7 +39,9 @@ const Event = ({ isLogedin }) => {
           </Text>
         </Box>
         <Flex padding="5" justifyContent="center" alignItems="center">
+          <a href="https://www.instagram.com/trapperxofficial/" target="_blank">
           <Image w="150px" src={require('./assets/Eticket.png')} alt="ETicket" />
+          </a>
         </Flex>
       </Flex>
 
