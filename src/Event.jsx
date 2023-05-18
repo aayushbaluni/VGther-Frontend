@@ -70,7 +70,7 @@ justifyContent="space-between"
 Venue: Arya Institute of Engineering and Technology
 </Heading>
 <Text textColor="white" marginTop="5" fontSize="1.9vh">
-Time: 6:00PM Onwards
+Time: 7:00PM Onwards
 </Text>
 </Box>
 <Flex padding="5" justifyContent="center" alignItems="center">
