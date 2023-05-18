@@ -34,8 +34,10 @@ const [isLoading, setIsLoading] = useState(false);
 const [collegeStudents, setCollegeStudents] = useState([]);
 const [amount , setAmount] = useState(0);
 
+
 const handleCollegeSelect = (index) => {
-  setIsChecked(!isChecked);
+  setIsChecked(false);
+
   setCollegeStudents((prevStudents) => {
     const updatedStudents = [...prevStudents];
     updatedStudents[index] = !updatedStudents[index];
@@ -306,7 +308,7 @@ const handleReferralCodeChange = (event) => {
 <Box display="flex" alignItems="center" marginTop={4}>
           <Checkbox
       colorScheme="white"
-      defaultIsChecked={isChecked}
+      isChecked={isChecked}
       color="white"
       onChange={handleCheckboxChange}
     >
