@@ -35,7 +35,7 @@ const [collegeStudents, setCollegeStudents] = useState([]);
 const [amount , setAmount] = useState(0);
 
 const handleCollegeSelect = (index) => {
-  setIsChecked(false)
+  setIsChecked(!isChecked);
   setCollegeStudents((prevStudents) => {
     const updatedStudents = [...prevStudents];
     updatedStudents[index] = !updatedStudents[index];
