@@ -31,8 +31,6 @@ const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
-const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW', 'SNGH', '09AG', '3PBY', 'IEN0', '8N6J']
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };

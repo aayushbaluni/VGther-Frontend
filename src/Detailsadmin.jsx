@@ -30,7 +30,6 @@ const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
-const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW', 'SNGH', '09AG', '3PBY', 'IEN0', '8N6J']
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -110,10 +109,26 @@ const checkoutHandler=async(amount,notes)=>{
 const [haveCoupon, setHaveCoupon] = useState(false);
 const [haveReferralCode, setHaveReferralCode] = useState(false);
 const verifyReferal = ()=>{
-var code = document.getElementById("refer").value
-if(refCodes.includes(code)){
-  setCode(code);
-}
+  var code = document.getElementById("refer").value
+  axios.post("https://v-gther-server-1.vercel.app/user/coupon",{
+      code:code
+    }).then((response) =>{
+      if(response.data.status==200){
+        setCode(code);
+      }
+      else{
+        toast({
+          title: 'Invalid referal code',
+          description: 'Please enter correct referal code',
+          status: 'warning',
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    })
+  
+  
+  }
 else{
   toast({
     title: 'Invalid referal code',
