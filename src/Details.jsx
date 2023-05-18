@@ -228,7 +228,7 @@ const handleReferralCodeChange = (event) => {
           {
           //times%5==0?300*times:350*times
           isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
-          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=1&cu=INR&tn=Pay to VGTHR`} />
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times}&cu=INR&tn=Pay to VGTHR`} />
           <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the transaction id in the below box </Text>
                   <Button
                     // colorScheme="blue"
@@ -245,7 +245,7 @@ const handleReferralCodeChange = (event) => {
           
           {ticket.length>0?<Link to={`/events`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
-            </Link>:<Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginLeft={['auto','40%']} > Buy Ticket of Rs. {times%5==0?300*times:350*times} </Button>}
+            </Link>:<Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginLeft={['auto','40%']} > Buy Ticket of Rs. {code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times} </Button>}
             </form>
             
             {/* <Box display="flex" alignItems="center" marginTop={4}>
