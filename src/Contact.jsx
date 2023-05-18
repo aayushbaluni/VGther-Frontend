@@ -18,7 +18,7 @@ import React from 'react';
 import { BsPerson } from 'react-icons/bs';
 import { MdOutlineEmail } from 'react-icons/md';
 import axios from "axios";
-
+import { useToast } from '@chakra-ui/react';
 
 export default function Contact() {
   const [isMobile] = useMediaQuery("(max-width: 768px)") 
@@ -26,22 +26,34 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const toast = useToast();
 
   async function handleSubmit(){
-    const {data}=await axios.post("http://localhost:80",{
+    const {data}=await axios.post("https://v-gther-server-1.vercel.app/user/message",{
         name:name,
         email:email,
         message:message
       });
     console.log(data);
-    // if(response.status!==200){
-    //   setError("Failed to Send Message","error")
-    // }
-    // else{
-    //   setError("Message Sent","success")
-    //   console.log(response.status)
+    if(data.status!==200){
+      toast({
+        title: 'Error',
+        description: 'Message send failed',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+    else{
+      toast({
+        title: 'Success',
+        description: 'Message Sent Successfully',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
       
-    // }
+    }
     
   }
   return (
@@ -103,7 +115,6 @@ export default function Contact() {
                     isFullWidth>
                     Send Message
                   </Button>
-                  {error && <ErrorMessage message={error} />}
                 </VStack>
               </Box>
            

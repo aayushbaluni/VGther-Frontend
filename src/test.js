@@ -20,13 +20,17 @@ const { default: axios } = require("axios");
 // // console.log(response.data);
 // //   })
 async function run(){
-  const response=await axios.post("https://v-gther-server-1.vercel.app/api/paymentverification",{
-    razorpay_order_id: "order_LqTuVUnugK7JQ8",
-    referer: "NA",
-    razorpay_payment_id: 350316403348,
-    parent_number: "919413465367"
-  });
-  console.log(response.data);
+  axios.post(
+    'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGw0E2hrFhR5ZS5996K5CExzlam92dOakJJ2Oy_IpatitCuQ/formResponse',
+    new URLSearchParams({
+        'entry.680841069': "Kunal",
+        'entry.1287125713': "kunalsharma0553@gmail.com",
+        'entry.373054253': 'Kunal Sharma is mt Nmae'
+    })
+).then(response=>{
+  console.log(response.status);
+
+})
 }
 run();
 // import axios from 'axios';
