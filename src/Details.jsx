@@ -321,7 +321,7 @@ const handleReferralCodeChange = (event) => {
           //times%5==0?300*times:350*times
           isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
           <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-70*times:amount-20*times}&cu=INR&tn=Pay to VGTHR`} />
-          <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the transaction id in the below box </Text>
+          <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the UPI Reference No/UTR ID in the below box </Text>
                   <Button
                     // colorScheme="blue"
                     bg="greay.400"
