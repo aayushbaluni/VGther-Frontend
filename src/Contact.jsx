@@ -39,10 +39,17 @@ export default function Contact() {
     console.log(data);
     setIsLoading(false)
     if(data=="ok"){
+      setName('')
+      setEmail('')
+      setMessage('')
+      try{
+        document.querySelectorAll("input, textarea").forEach((x) => x.value = '');
+      }
+      catch(x){}
       toast({
         title: 'Success',
         description: 'Message Sent Successfully',
-        status: 'warning',
+        status: 'success',
         duration: 5000,
         isClosable: true,
       });
