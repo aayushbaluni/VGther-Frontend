@@ -35,10 +35,10 @@ export default function Contact() {
         message:message
       });
     console.log(data);
-    if(data.status!==200){
+    if(data.data=="ok"){
       toast({
-        title: 'Error',
-        description: 'Message send failed',
+        title: 'Success',
+        description: 'Message Sent Successfully',
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -46,8 +46,8 @@ export default function Contact() {
     }
     else{
       toast({
-        title: 'Success',
-        description: 'Message Sent Successfully',
+        title: 'Error',
+        description: 'Message send failed',
         status: 'warning',
         duration: 5000,
         isClosable: true,
