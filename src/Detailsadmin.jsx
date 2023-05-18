@@ -179,10 +179,10 @@ const handleReferralCodeChange = (event) => {
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }
-          {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
+          {ticket.length>0?<ErrorMessage alignItems={'center'} alignSelf={'center'}  message={`Ticket Generated with Ticket ID:- ${ticket}`} error={"success"}/>:""}
           {ticket.length>0?<Link to={`/eventsadmin`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
-            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginLeft={['auto','40%']} > Buy Ticket of Rs. {code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times} </Button>{
+            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} isDisabled={!isChecked} marginTop={"10px"} > Buy Ticket of Rs. {code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times} </Button>{
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }</>}
