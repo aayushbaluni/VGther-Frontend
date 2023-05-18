@@ -43,7 +43,7 @@ const handleCollegeSelect = (index) => {
 };
   const handleCheckboxChange = () => {
     var amount=0;
-    for(var i=0;i<collegeStudents.length;i++){
+    for(var i=0;i<name.length;i++){
       if(collegeStudents[i]){
         amount+=350;
       }
