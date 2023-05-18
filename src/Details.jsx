@@ -44,7 +44,7 @@ const refCodes = ['7IHZ', 'Y8BK', 'A49L', 'LMZH', 'LRVV', 'ZC88', 'L0BJ', 'SPZW'
     const dataURL = canvas[0].toDataURL();
     // Create a download link
     const link = document.createElement('a');
-    link.download = 'qrcode-vgthr.png';
+    link.download = 'qrcode-vgthr.jpeg';
     link.href = dataURL;
 
     link.click();
