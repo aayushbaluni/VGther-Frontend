@@ -15,24 +15,28 @@ const Event = ({ isLogedin }) => {
 const [cntTicket, setCntTicket] = useState(1);
 
 const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
-useNumberInput({
-step: 1,
-defaultValue: cntTicket,
-min: 1,
-max: 100,
-precision: 1,
-});
+  useNumberInput({
+    step: 1,
+    defaultValue: cntTicket,
+    min: 1,
+    max: 100,
+    precision: 1,
+    onChange: (valueString) => {
+      const value = parseInt(valueString, 10);
+      setCntTicket(value);
+    },
+  });
 
 const handleDecrement = () => {
-if (cntTicket > 1) {
-setCntTicket((prevCount) => prevCount - 1);
-}
+  if (cntTicket > 1) {
+    setCntTicket((prevCount) => prevCount - 1);
+  }
 };
 
 const handleIncrement = () => {
-if (cntTicket < 100) {
-setCntTicket((prevCount) => prevCount + 1);
-}
+  if (cntTicket < 100) {
+    setCntTicket((prevCount) => prevCount + 1);
+  }
 };
 
 return (
