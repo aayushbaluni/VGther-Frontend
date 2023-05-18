@@ -129,17 +129,6 @@ const verifyReferal = ()=>{
   
   
   }
-else{
-  toast({
-    title: 'Invalid referal code',
-    description: 'Please enter correct referal code',
-    status: 'warning',
-    duration: 5000,
-    isClosable: true,
-  });
-}
-
-}
 const handleCouponChange = (event) => {
   setHaveCoupon(event.target.checked);
 };
