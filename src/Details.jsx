@@ -31,7 +31,27 @@ const [code,setCode] = useState('NA');
 const [ticket, setTicket] = useState("")
 const [isChecked, setIsChecked] = useState(false);
 const [isLoading, setIsLoading] = useState(false);
+const [collegeStudents, setCollegeStudents] = useState([]);
+const [amount , setAmount] = useState(0);
+
+const handleCollegeSelect = (index) => {
+  setCollegeStudents((prevStudents) => {
+    const updatedStudents = [...prevStudents];
+    updatedStudents[index] = !updatedStudents[index];
+    return updatedStudents;
+  });
+};
   const handleCheckboxChange = () => {
+    var amount=0;
+    for(var i=0;i<collegeStudents.length;i++){
+      if(collegeStudents[i]){
+        amount+=350;
+      }
+      else{
+        amount+=500;
+      }
+    }
+    setAmount(amount)
     setIsChecked(!isChecked);
   };
   function handleDownload() {
@@ -57,7 +77,9 @@ const HandleChange=async(e)=>{
     var num=parseInt(document.querySelectorAll("#capture")[1].value);
     console.log(num);
     var jSon = [];
+    var kkk=0;
     for (var i = 0; i < l - 1;) {
+      if(collegeStudents[kkk]){
         jSon.push(
             {
                 name: values[i].value,
@@ -67,6 +89,20 @@ const HandleChange=async(e)=>{
             }
         )
         i += 3
+        }
+        else{
+          jSon.push(
+            {
+                name: values[i].value,
+                number: parseInt(values[i + 1].value),
+                college_id: "NA",
+                parent_number:num.toString()
+            }
+        )
+        i += 2
+        }
+        kkk+=1
+        
     }
     var notes = jSon;
     if(notes.length!==0){
@@ -191,16 +227,68 @@ const handleReferralCodeChange = (event) => {
         <Text color={'white'} fontSize={'1.8vh'} paddingTop={'2'}>Please Make sure that the details are same as on id's </Text>
         <Box minH={'calc(80vh)'} marginTop={10} w={'90%'}>
         <form onSubmit={HandleChange} className='invoice-form'>
-            {
-              name.map((item,i) =>
-                <Box minH={'calc(30vh)'} w={'100%'} border={'1px solid white'} display={'flex'}  flexDir={'column'} borderRadius={'23px'} padding={'10'} marginBottom={'10'}>
-                    <Text textColor={'white'}>Person {i+1}</Text>
-                    <Input id="capture" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter Name' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
-                    <Input id="capture" type="tel" pattern="[0-9]{10}" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter Phone Number' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
-                    <Input id="capture" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter College Id' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
-                </Box>
-              )
-            }
+        {name.map((item, i) => (
+          <Box
+            key={i}
+            minH={'calc(30vh)'}
+            w={'100%'}
+            border={'1px solid white'}
+            display={'flex'}
+            flexDir={'column'}
+            borderRadius={'23px'}
+            padding={'10'}
+            marginBottom={'10'}
+          >
+            <Text textColor={'white'}>Person {i + 1}</Text>
+            <Input
+              id="capture"
+              type="text"
+              marginTop={'10'}
+              required
+              variant={'outline'}
+              color={'white'}
+              placeholder="Enter Name"
+              focusBorderColor="white"
+              textColor={'white'}
+              w={['80%', '30%']}
+            />
+            <Input
+              id="capture"
+              type="tel"
+              pattern="[0-9]{10}"
+              marginTop={'10'}
+              required
+              variant={'outline'}
+              color={'white'}
+              placeholder="Enter Phone Number"
+              focusBorderColor="white"
+              textColor={'white'}
+              w={['80%', '30%']}
+            />
+            <Checkbox
+              colorScheme="white"
+              defaultIsChecked={collegeStudents[i]}
+              color="white"
+              onChange={() => handleCollegeSelect(i)}
+            >
+              This person is an Arya college student
+            </Checkbox>
+            {collegeStudents[i] && (
+              <Input
+                id="capture"
+                type="text"
+                marginTop={'10'}
+                required
+                variant={'outline'}
+                color={'white'}
+                placeholder="Enter College Id"
+                focusBorderColor="white"
+                textColor={'white'}
+                w={['80%', '30%']}
+              />
+            )}
+          </Box>
+        ))}
 <Box display="flex" alignItems="center" marginTop={2}>
             <Checkbox colorScheme="white" color="white" defaultIsChecked onChange={handleReferralCodeChange}>
               I have a referral code
@@ -228,7 +316,7 @@ const handleReferralCodeChange = (event) => {
           {
           //times%5==0?300*times:350*times
           isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
-          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times}&cu=INR&tn=Pay to VGTHR`} />
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-70*times:amount-20*times}&cu=INR&tn=Pay to VGTHR`} />
           <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the transaction id in the below box </Text>
                   <Button
                     // colorScheme="blue"
@@ -242,7 +330,7 @@ const handleReferralCodeChange = (event) => {
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter UPI Reference No/UTR ID' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
           {ticket.length>0?<Link to={`/events`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
-            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times} </Button>{
+            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-70*times:amount-20*times} </Button>{
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }</>}
