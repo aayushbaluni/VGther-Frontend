@@ -1,7 +1,7 @@
 import {
   Box,
   Button,
-
+  Spinner,
   FormControl,
   FormLabel,
   Input,
@@ -27,15 +27,18 @@ export default function Contact() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const toast = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(){
+    setIsLoading(true)
     const {data}=await axios.post("https://v-gther-server-1.vercel.app/user/message",{
         name:name,
         email:email,
         message:message
       });
     console.log(data);
-    if(data.data=="ok"){
+    setIsLoading(false)
+    if(data=="ok"){
       toast({
         title: 'Success',
         description: 'Message Sent Successfully',
@@ -100,7 +103,10 @@ export default function Contact() {
                       onChange={event => setMessage(event.currentTarget.value)}
                     />
                   </FormControl>
-
+                  {
+            isLoading?
+            <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
+          }
                   <Button
                     // colorScheme="blue"
                     bg="greay.400"
