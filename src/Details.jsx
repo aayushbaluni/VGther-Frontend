@@ -35,6 +35,7 @@ const [collegeStudents, setCollegeStudents] = useState([]);
 const [amount , setAmount] = useState(0);
 
 const handleCollegeSelect = (index) => {
+  setIsChecked(false)
   setCollegeStudents((prevStudents) => {
     const updatedStudents = [...prevStudents];
     updatedStudents[index] = !updatedStudents[index];
@@ -290,7 +291,7 @@ const handleReferralCodeChange = (event) => {
           </Box>
         ))}
 <Box display="flex" alignItems="center" marginTop={2}>
-            <Checkbox colorScheme="white" color="white" defaultIsChecked onChange={handleReferralCodeChange}>
+            <Checkbox colorScheme="white" color="white" isDisabled={code!=="NA"} defaultIsChecked onChange={handleReferralCodeChange}>
               I have a referral code
             </Checkbox>
             {haveReferralCode && (
