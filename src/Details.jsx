@@ -239,7 +239,7 @@ const handleReferralCodeChange = (event) => {
                     isFullWidth>
                     Download QrCode
                   </Button>
-          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter TransactionId/RefId' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
+          <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter UPI Reference No/UTR ID' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
           {ticket.length>0?<Link to={`/events`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
             </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {code=="NA"?times%5==0?300*times:350*times:times%5==0?280*times:330*times} </Button>{
