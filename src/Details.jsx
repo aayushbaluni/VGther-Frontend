@@ -275,7 +275,7 @@ const handleReferralCodeChange = (event) => {
               color="white"
               onChange={() => handleCollegeSelect(i)}
             >
-              This person is an Arya college student
+              This person is a Arya college student
             </Checkbox>
             {collegeStudents[i] && (
               <Input
