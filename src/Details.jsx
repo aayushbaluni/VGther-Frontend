@@ -264,7 +264,7 @@ const handleReferralCodeChange = (event) => {
               required
               variant={'outline'}
               color={'white'}
-              placeholder="Enter Phone Number"
+              placeholder="Mobile Number"
               focusBorderColor="white"
               textColor={'white'}
               w={['100%', '30%']}
@@ -273,6 +273,7 @@ const handleReferralCodeChange = (event) => {
               colorScheme="white"
               defaultIsChecked={collegeStudents[i]}
               color="white"
+              paddingTop="22px"
               onChange={() => handleCollegeSelect(i)}
             >
               This person is a Arya college student
