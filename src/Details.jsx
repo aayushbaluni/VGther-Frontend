@@ -254,7 +254,7 @@ const handleReferralCodeChange = (event) => {
               placeholder="Enter Name"
               focusBorderColor="white"
               textColor={'white'}
-              w={['80%', '30%']}
+              w={['100%', '30%']}
             />
             <Input
               id="capture"
@@ -267,7 +267,7 @@ const handleReferralCodeChange = (event) => {
               placeholder="Enter Phone Number"
               focusBorderColor="white"
               textColor={'white'}
-              w={['80%', '30%']}
+              w={['100%', '30%']}
             />
             <Checkbox
               colorScheme="white"
@@ -288,7 +288,7 @@ const handleReferralCodeChange = (event) => {
                 placeholder="Enter College Id"
                 focusBorderColor="white"
                 textColor={'white'}
-                w={['80%', '30%']}
+                w={['100%', '30%']}
               />
             )}
           </Box>
