@@ -321,7 +321,7 @@ const handleReferralCodeChange = (event) => {
           {
           //times%5==0?300*times:350*times
           isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
-          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-70*times:amount-20*times}&cu=INR&tn=Pay to VGTHR`} />
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-150*times:amount-100*times}&cu=INR&tn=Pay to VGTHR`} />
           <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the UPI Reference No/UTR ID in the below box </Text>
                   <Button
                     // colorScheme="blue"
@@ -335,7 +335,7 @@ const handleReferralCodeChange = (event) => {
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter UPI Reference No/UTR ID' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
           {ticket.length>0?<Link to={`/events`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
-            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-70*times:amount-20*times} </Button>{
+            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-150*times:amount-100*times} </Button>{
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }</>}
