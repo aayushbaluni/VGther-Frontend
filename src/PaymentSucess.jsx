@@ -36,7 +36,7 @@ function PaymentDetails({val}){
   console.log(val);
   return <Box w={'80%'} minH={'calc(30vh)'} border={'1px solid white'} borderRadius={'25px'} marginTop={'10'}  display={'flex'} flexDir={['column-reverse','row']} alignItems={'center'} justifyContent={'space-between'} bgImage={'linear-gradient(to bottom right, black,gray)'}>
         <Box  w={['100%','50%']} padding={'10'}>
-          <Text color={'white'} marginTop={'-10'} marginBottom={'10'} textDecor={'underline'}>V-Gther</Text>
+          <Text color={'white'} marginTop={'-10'} marginBottom={'10'} textDecor={'underline'}>V-GTHR</Text>
           
           <Heading textColor={'white'} fontSize={'3vh'}> {val.name}</Heading>
           <Text textColor={'white'} marginTop={'5'}  fontSize={'1.9vh'}> {val.number}</Text>

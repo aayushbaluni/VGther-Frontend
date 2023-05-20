@@ -74,7 +74,7 @@ function PaymentDetails({ val }) {
     >
       <Box w={['100%', '50%']} padding="10">
         <Text color="white" marginTop="-10" marginBottom="10" textDecor="underline">
-          V-Gther
+          V-GTHR
         </Text>
         <Heading textColor="white" fontSize="3vh">
           {val.name}

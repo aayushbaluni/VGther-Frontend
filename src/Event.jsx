@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {
 Box,
@@ -12,6 +12,15 @@ useNumberInput,
 } from '@chakra-ui/react';
 
 const Event = ({ isLogedin }) => {
+  const [hasScrolledToTop, setHasScrolledToTop] = useState(false);
+
+  useEffect(() => {
+    if (!hasScrolledToTop) {
+      window.scroll(0, 0);
+      setHasScrolledToTop(true);
+    }
+  }, [hasScrolledToTop]);
+
 const [cntTicket, setCntTicket] = useState(1);
 
 const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
