@@ -47,7 +47,7 @@ const MyTickets = ({ isLogedin }) => {
 
   return (
     <Box minH="100vh" bgColor="black" display="flex" flexDir="column" justifyContent="start" alignItems="center" padding="10">
-      <Heading textColor="white" textDecor="underline">
+      <Heading textColor="white" textDecor="underline" textAlign={"center"}>
         Rewards Information
       </Heading>
       {isLoading ? (
@@ -82,7 +82,7 @@ const MyTickets = ({ isLogedin }) => {
     <Text color="white" textDecor="underline">Refered Persons:-</Text>
         {details.map((val, i) => <PaymentDetails key={i} val={val} />)}
         
-        <Text color="white">
+        <Text color="white" textAlign={"center"}>
           You can refer your friends by asking them to put your registered mobile number i.e {isLogedin.mobile.number.slice(2,12)} in refer box and you can withdraw your amount once you got 200 in your balance<br></br>
           To withdraw please fill out the contact us form and we will get in contact with you.
     </Text>
