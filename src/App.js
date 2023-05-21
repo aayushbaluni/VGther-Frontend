@@ -26,7 +26,7 @@ function App() {
   // localStorage.setItem("data",otplessUser);
   console.log(isLogedin)
   setisLogedin(otplessUser)
-  axios.post('https://v-gther-server-1.vercel.app/user/register', {name:otplessUser.mobile.name,mobile:otplessUser.mobile.number.slice(2,12)})
+  axios.post('https://v-gther-server-1.vercel.app/user/register', {name:otplessUser.mobile.name,number:otplessUser.mobile.number.slice(2,12)})
 
   
  };
