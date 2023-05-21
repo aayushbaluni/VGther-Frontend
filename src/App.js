@@ -8,6 +8,7 @@ import Detailsadmin from "./Detailsadmin";
 import Header from "./Header";
 import Privacy from "./Privacy";
 import Terms from "./Terms";
+import axios from 'axios';
 import Scrolltop from "./Scrolltop";
 import React, { useState,useEffect } from 'react';
 import MyRewards from "./MyRewards"
@@ -23,8 +24,11 @@ function App() {
   // console.log(JSON.stringify(otplessUser));
   console.log(otplessUser.mobile.number);
   // localStorage.setItem("data",otplessUser);
-  setisLogedin(otplessUser)
   console.log(isLogedin)
+  setisLogedin(otplessUser)
+  axios.post('https://v-gther-server-1.vercel.app/user/register', {name:otplessUser.mobile.name,mobile:otplessUser.mobile.number.slice(2,12)})
+
+  
  };
 }, []);
 
