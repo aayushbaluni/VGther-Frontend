@@ -49,10 +49,10 @@ const handleCollegeSelect = (index) => {
     var amount=0;
     for(var i=0;i<name.length;i++){
       if(collegeStudents[i]){
-        amount+=350;
+        amount+=199;
       }
       else{
-        amount+=500;
+        amount+=299;
       }
     }
     setAmount(amount)
@@ -112,13 +112,13 @@ const HandleChange=async(e)=>{
     if(notes.length!==0){
         console.log(notes)
         if(times%5===0){
-            checkoutHandler(times*300,notes)
+            checkoutHandler(notes)
         }
         else
-        checkoutHandler(times*350,notes)
+        checkoutHandler(notes)
     }
 }
-const checkoutHandler=async(amount,notes)=>{
+const checkoutHandler=async(notes)=>{
   try{
 
   
@@ -321,7 +321,7 @@ const handleReferralCodeChange = (event) => {
           {
           //times%5==0?300*times:350*times
           isChecked&&ticket.length<=0?<Flex padding="5" justifyContent="center" alignItems="center" flexDirection={"column"}>
-          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-150*times:amount-100*times}&cu=INR&tn=Pay to VGTHR`} />
+          <QRCode value={`upi://pay?pa=BHARATPE09912886953@yesbankltd&pn=BharatPe Merchant&am=${amount}&cu=INR&tn=Pay to VGTHR`} />
           <Text color={'white'} textAlign={"center"}>Kindly pay through the above qr code and paste the UPI Reference No/UTR ID in the below box </Text>
                   <Button
                     // colorScheme="blue"
@@ -335,7 +335,7 @@ const handleReferralCodeChange = (event) => {
           <Input id="txid" type="text" marginTop={'10'} required  variant={'outline'} color={'white'} placeholder='Enter UPI Reference No/UTR ID' focusBorderColor='white' textColor={'white'}  w={['80%','30%']}/>
           {ticket.length>0?<Link to={`/events`}>
           <Button alignItems={'center'} alignSelf={'center'} marginLeft={['auto','40%']} > Go Back </Button>
-            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-150*times:amount-100*times} </Button>{
+            </Link>:<><Button type="submit" alignItems={'center'} alignSelf={'center'} marginTop={"10px"} isDisabled={!isChecked} > Buy Ticket of Rs. {amount} </Button>{
             isLoading?
             <><Spinner alignItems={'center'} alignSelf={'center'} size="lg" color="white" marginTop="10" /><br></br></>:""
           }</>}
@@ -365,5 +365,5 @@ const handleReferralCodeChange = (event) => {
 
   )
 }
-
+//code=="NA"?times%5==0?amount-50*times:amount:times%5==0?amount-150*times:amount-100*times
 export default Details

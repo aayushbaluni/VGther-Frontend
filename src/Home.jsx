@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box,Image, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import Contact from "./Contact"
 import "./assets/style.css"
@@ -14,6 +14,12 @@ const Home = () => {
     </Box>
     <Box paddingTop={['10','calc(10vh)']} minH={'calc(60vh)'} w={'100%'}  bgColor={'black'} justifyContent={'start'} textAlign={'center'} id='about'>
         <Heading id="h1" color={'white'} textTransform={'uppercase'}>We gather • we vibe together</Heading>
+        <Image
+w="auto"
+alignContent={"center"}
+src={require('./assets/slider.png')}
+alt="Banner"
+/>
        <Stack direction={['column','row']} padding={["3",'5']} marginTop={'9'} marginLeft={['','9']} align={'center'} minH={'100%'} >
         <Box w={['100%','50%']}  alignItems={'center'} minH={'100%'} >
         <video loop autoPlay muted>

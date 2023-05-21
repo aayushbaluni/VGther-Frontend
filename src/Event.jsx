@@ -68,6 +68,12 @@ return (
      flexDir="column"
      padding="10"
    >
+    <Image
+w="auto"
+alignContent={"center"}
+src={require('./assets/banner.png')}
+alt="Banner"
+/>
 <Flex
 width="100%"
 flexDir={['column', 'row']}
