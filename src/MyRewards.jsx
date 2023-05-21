@@ -62,33 +62,40 @@ const MyTickets = ({ isLogedin }) => {
       color="white"
       borderRadius="md"
     >
-      <Box width={isMobile ? '100%' : '45%'}>
-        <Text fontSize={isMobile ? '2xl' : '4xl'} fontWeight="bold">
+      <Box width={isMobile ? '100%' : '45%'} textAlign={"center"}>
+        <Text fontSize={isMobile ? '1xl' : '4xl'} fontWeight="bold">
           Number of Referrals
         </Text>
-        <Text fontSize={isMobile ? '3xl' : '5xl'} fontWeight="bold" mt={2}>
+        <Text fontSize={isMobile ? '1xl' : '5xl'} fontWeight="bold" mt={2}>
           {details.length}
         </Text>
       </Box>
-      <Box width={isMobile ? '100%' : '45%'}>
-        <Text fontSize={isMobile ? '2xl' : '4xl'} fontWeight="bold">
+      <Box width={isMobile ? '100%' : '45%'} textAlign={"center"}>
+        <Text fontSize={isMobile ? '1xl' : '4xl'} fontWeight="bold">
           Amount Earned
         </Text>
-        <Text fontSize={isMobile ? '3xl' : '5xl'} fontWeight="bold" mt={2}>
+        <Text fontSize={isMobile ? '1xl' : '5xl'} fontWeight="bold" mt={2}>
           {details.length*20}
         </Text>
       </Box>
     </Flex>
-    <Text>Refered Persons:-</Text>
-        {details.map((val, i) => <PaymentDetails key={i} val={val} />)}</>
+    <Text color="white" textDecor="underline">Refered Persons:-</Text>
+        {details.map((val, i) => <PaymentDetails key={i} val={val} />)}
+        
+        <Text color="white">
+          You can refer your friends by asking them to put your registered mobile number i.e {isLogedin.mobile.number.slice(2,12)} in refer box and you can withdraw your amount once you got 200 in your balance<br></br>
+          To withdraw please fill out the contact us form and we will get in contact with you.
+    </Text>
+        </>
       ):<ErrorMessage message={"No Tickets found!!"} error={"warning"}/>}
+
     </Box>
   );
 };
 
 function PaymentDetails({ val }) {
   return (
-    <Text color="white" textDecor="underline">
+    <Text color="white">
           {val}
     </Text>
   );
