@@ -146,11 +146,19 @@ const scrollToSection = async (sectionId) => {
                     ContactUs
                   </Button>
                   {isLogedin.mobile.number !== null ? (
+                    <>
                     <Link to={'/myTickets'}>
                       <Button variant={'ghost'} textColor={'white'} onClick={onClose} colorScheme="black">
                         My Tickets
                       </Button>
                     </Link>
+                    <Link to={'/myRewards'}>
+                    <Button variant={'ghost'} textColor={'white'} onClick={onClose} colorScheme="black">
+                      My Rewards
+                    </Button>
+                  </Link>
+                    </>
+                    
                   ) : (
                     <></>
                   )}
@@ -176,12 +184,20 @@ const scrollToSection = async (sectionId) => {
             ContactUs
           </Button>
           {isLogedin.mobile.number != null ? (
+            <>
             <Link to={'/myTickets'}>
               {' '}
               <Button variant={'ghost'} textColor={'white'} colorScheme="black">
                 My Tickets
               </Button>
             </Link>
+            <Link to={'/myRewards'}>
+            {' '}
+            <Button variant={'ghost'} textColor={'white'} colorScheme="black">
+              My Rewards
+            </Button>
+          </Link>
+          </>
           ) : (
             <></>
           )}

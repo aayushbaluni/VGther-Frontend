@@ -205,10 +205,19 @@ axios.post("https://v-gther-server-1.vercel.app/user/coupon",{
     if(response.data.status==200){
       setCode(code);
     }
+    else if(response.data.status==202){
+      toast({
+        title: 'Referral Limit Reached',
+        description: 'A single person can only refer upto 10 persons',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
     else{
       toast({
-        title: 'Invalid referal code',
-        description: 'Please enter correct referal code',
+        title: 'Invalid referral code',
+        description: 'User must buy a ticket to generate his referral code',
         status: 'warning',
         duration: 5000,
         isClosable: true,

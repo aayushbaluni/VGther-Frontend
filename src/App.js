@@ -10,7 +10,7 @@ import Privacy from "./Privacy";
 import Terms from "./Terms";
 import Scrolltop from "./Scrolltop";
 import React, { useState,useEffect } from 'react';
-
+import MyRewards from "./MyRewards"
 import MyTickets from "./MyTickets";
 import Footer from "./Footer";
 import ContactUs from "./Contactus";
@@ -44,6 +44,7 @@ function App() {
       {/* <Route path="/verify" element={<OtpBox/>}/> */}
       {/* <Route path="/signup" element={<SignUp/>}/> */}
       <Route path="/myTickets" element={<MyTickets isLogedin={isLogedin}/>}/>
+      <Route path="/myRewards" element={<MyRewards isLogedin={isLogedin}/>}/>
       <Route path="/legal/privacy" element={<Privacy/>}/>
       <Route path="/legal/terms" element={<Terms/>}/>
       <Route path="/contactus" element={<ContactUs/>}/>
