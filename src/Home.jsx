@@ -19,6 +19,7 @@ w="auto"
 alignContent={"center"}
 src={require('./assets/slider.png')}
 alt="Banner"
+width={"100%"}
 />
        <Stack direction={['column','row']} padding={["3",'5']} marginTop={'9'} marginLeft={['','9']} align={'center'} minH={'100%'} >
         <Box w={['100%','50%']}  alignItems={'center'} minH={'100%'} >
