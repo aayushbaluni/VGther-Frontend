@@ -289,8 +289,11 @@ const handleReferralCodeChange = (event) => {
             </Checkbox>
             {collegeStudents[i] && (
               <Input
+              type="number"
+              pattern="[0-9]{10}"
+
                 id="capture"
-                type="text"
+                
                 marginTop={'10'}
                 required
                 variant={'outline'}
