@@ -87,7 +87,10 @@ const MyTickets = ({ isLogedin }) => {
           To withdraw please fill out the contact us form and we will get in contact with you.
     </Text>
         </>
-      ):<ErrorMessage message={"No Tickets found!!"} error={"warning"}/>}
+      ):<><ErrorMessage message={"No Referral Found"} error={"warning"}/><Text color="white" textAlign={"center"}>
+      You can refer your friends by asking them to put your registered mobile number i.e {isLogedin.mobile.number.slice(2,12)} in refer box and you can withdraw your amount once you got 200 in your balance<br></br>
+      To withdraw please fill out the contact us form and we will get in contact with you.
+</Text></>}
 
     </Box>
   );
