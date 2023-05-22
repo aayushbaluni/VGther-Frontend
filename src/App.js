@@ -20,11 +20,16 @@ function App() {
   const [isLogedin,setisLogedin] = useState({mobile:{number:null}});
   useEffect(() => {
 //  Define the 'otpless' function
+if(localStorage.getItem("nekoTssel-PTO") == null){
+  localStorage.removeItem("mobile")
+}
+else{
+  setisLogedin({token:localStorage.getItem("nekoTssel-PTO"),mobile:{number:localStorage.getItem("mobile")}})
+}
  window.otpless = (otplessUser) => {
   // console.log(JSON.stringify(otplessUser));
-  console.log(otplessUser.mobile.number);
-  // localStorage.setItem("data",otplessUser);
-  console.log(isLogedin)
+  
+  localStorage.setItem("mobile",otplessUser.mobile.number)
   setisLogedin(otplessUser)
   axios.post('https://v-gther-server-1.vercel.app/user/register', {name:otplessUser.mobile.name,number:otplessUser.mobile.number.slice(2,12)})
 

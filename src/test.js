@@ -4,33 +4,33 @@ const { default: axios } = require("axios");
 // // const secret = "otpless-test-secret-key";
 
 
-//   const payload = {
-//     waId: "248ef842ce174bca8eed1ed7129357d6",
-//   };
-//   const headers = {
-//     clientId: "02fz9i8d",
-//     clientSecret: "cjzgfh73hsqxgnt8",
-//     "Content-Type": "application/json",
-//   };
-// async function run(){
-
-// //   axios
-// //   .post("https://vgthr.authlink.me", payload, { headers: headers })
-// //   .then(async (response) => {
-// // console.log(response.data);
-// //   })
+  const payload = {
+    waId: "d68e8dff006746ce997626da62f6006e",
+  };
+  const headers = {
+    clientId: "02fz9i8d",
+    clientSecret: "cjzgfh73hsqxgnt8",
+    "Content-Type": "application/json",
+  };
 async function run(){
-  axios.post(
-    'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGw0E2hrFhR5ZS5996K5CExzlam92dOakJJ2Oy_IpatitCuQ/formResponse',
-    new URLSearchParams({
-        'entry.680841069': "Kunal",
-        'entry.1287125713': "kunalsharma0553@gmail.com",
-        'entry.373054253': 'Kunal Sharma is mt Nmae'
-    })
-).then(response=>{
-  console.log(response.status);
 
-})
+  axios
+  .post("https://vgthr.authlink.me", payload, { headers: headers })
+  .then(async (response) => {
+console.log(response.data);
+  })
+// async function run(){
+//   axios.post(
+//     'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGw0E2hrFhR5ZS5996K5CExzlam92dOakJJ2Oy_IpatitCuQ/formResponse',
+//     new URLSearchParams({
+//         'entry.680841069': "Kunal",
+//         'entry.1287125713': "kunalsharma0553@gmail.com",
+//         'entry.373054253': 'Kunal Sharma is mt Nmae'
+//     })
+// ).then(response=>{
+//   console.log(response.status);
+
+// })
 }
 run();
 // import axios from 'axios';
