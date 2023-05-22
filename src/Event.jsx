@@ -71,7 +71,7 @@ return (
     <Image
 w="auto"
 alignContent={"center"}
-src={require('./assets/banner.png')}
+src={require('./assets/banner.jpeg')}
 alt="Banner"
 />
 <Flex
