@@ -52,7 +52,7 @@ const MyTickets = ({ isLogedin }) => {
       </Heading>
       {isLoading ? (
         <Spinner size="lg" color="white" marginTop="10" />
-      ) : details.length>0?(
+      ) : details!=undefined?(
         <>
         <Flex
       justifyContent="space-between"
