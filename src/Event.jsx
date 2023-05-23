@@ -133,11 +133,11 @@ alt="ETicket"
         </Flex>
       </Box>
       <Link
-        to="/details"
+        to="/"
         state={cntTicket}
         style={{ textDecoration: 'none' }}
       >
-              <Button variant="outline" isDisabled={isLogedin.mobile.number===null} color="white" fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
+              <Button variant="outline" isDisabled={true} color="white" fontSize="1.5vh" w={['calc(10vh)', 'calc(15vh)']}>
                 Book Tickets
               </Button>
             </Link>
@@ -151,5 +151,7 @@ alt="ETicket"
 
   );
 };
+//details
+//isLogedin.mobile.number===null
 //isLogedin.mobile.number===null
 export default Event;
