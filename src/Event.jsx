@@ -144,6 +144,7 @@ alt="ETicket"
           </Box>
           
             </Box>
+            <Text color={"white"} textAlign={"center"} padding={"10px"}>Ticket window is Closed</Text>
             {
         isLogedin.mobile.number === null ? <Text color={"white"} textAlign={"center"} padding={"10px"}>Please Sign in by clicking on the floating button. Even after login if the button doesnt become active kindly refresh the page signout and try again</Text> : null
       }
